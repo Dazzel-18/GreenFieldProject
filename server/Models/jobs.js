@@ -96,6 +96,10 @@ var getUserJob = function (jobTitle,user, callback){
     callback(null, data)
   }
   });
+
+
+
+  
 };
 
 var findSome = function(title, callback){
