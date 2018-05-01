@@ -48,9 +48,9 @@ render() {
   return (
   
     <div id="profile">
-    <div className="row noPadding" >
+    <div className="row " >
     
-     <div className="col-md-3 noPadding"  >
+     <div className="col-md-3 "  >
         <img  src={this.state.user.image}/>
         <h2>Name:{this.state.user.name}</h2> 
         <h2>email:{this.state.user.email}</h2>
