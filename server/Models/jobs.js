@@ -25,7 +25,8 @@ var jobsSchema = mongoose.Schema({
     type:Date,
     default:Date.now
   },
-
+  dateFrom: String,
+  dateTo: String,
   comments:{
   	type:[{username:String,comment:String}],
    },

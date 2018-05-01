@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
-
 class JobsForm extends React.Component {
 	constructor(props) {
 		super(props);
@@ -98,6 +97,7 @@ class JobsForm extends React.Component {
 
 			<Row>
 			<Col md={1}>
+			Time :
 			</Col> 
 			<Col md={2}>
 			<span>From</span>
@@ -116,7 +116,28 @@ class JobsForm extends React.Component {
 			<Col md={1}>
 			</Col>
 			</Row><br /><br />
+			<Row>
+			<Col md={1}>
+			Date :
+			</Col>
+			<Col md={2}>
+			<span>From</span>
+			</Col>
+			<Col md={3}>
+			<label >
+			<FormControl type = "date" name = "dateFrom" placeholder = "Date" autoFocus required onChange={this.onChange} />
+			</label> </Col>
+			<Col md={2}>
+			<span>To</span>
+			</Col>
+			<Col md={3}>
+			<label >
+			<FormControl type = "date" name = "dateTo" placeholder = "Date" autoFocus required onChange={this.onChange} />
+			</label></Col>
+			<Col md={1}>
+			</Col>
 
+			</Row><br /><br />
 			    <Button id="jobb" className="btn btn-primary" type="submit" bsSize="large" >
 				     Add
 			    </Button>
