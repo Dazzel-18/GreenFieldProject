@@ -33,6 +33,8 @@ componentDidMount(){
 		from:jobInfo.from,
 		to:jobInfo.to,
 		jobDescription:jobInfo.jobDescription,
+		dateFrom:jobInfo.dateFrom,
+		dateTo:jobInfo.dateTo
 		//phoneNumber:jobInfo.phoneNumber
  
     })
