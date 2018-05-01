@@ -12,7 +12,9 @@ class JobsForm extends React.Component {
 			category: '',
 			from: '',
 			to: ''},
-			message:''
+			message:'',
+			dateFrom: '',
+			dateTo: ''
 			
 		}
 		this.baseState = this.state;
