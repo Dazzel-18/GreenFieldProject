@@ -56,7 +56,6 @@ class Home extends React.Component {
     .then(response => {
     const posts = response.data;
     that.setState({items:posts});
-    
   })
   .catch(function (error) {
     console.log(error);
@@ -74,10 +73,10 @@ render() {
     <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
     </div>
     <div>
-    {this.state.items.map(function(item){
+    {this.state.items.map(function(item ,index){
       return (
 
-        <JobList item={item}/>
+        <JobList key={index} item={item}/>
         )
     })}
     

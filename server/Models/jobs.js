@@ -126,15 +126,49 @@ var regexValue = '\.*'+title+'\.*';
     });
   
 };
-var jobByUserName = function(userName, callback){
-  
-  Jobs.find(userName).exec(function(err, data){
-     if(err){
-      callback(err, null)
-    } else {
-    callback(null, data)
+var jobByUserName = function(user, callback){
+  if(user.user!=="All"){
+   Jobs.aggregate([
+    {$match:{"user":user.user}},
+   {
+    
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
   }
-  });
+  
+], function (err, data) {
+        if (err) {
+          console.log(err);
+            callback(err, null);
+        }
+        console.log(data);
+        callback(null, data)
+    });
+ }else{
+   Jobs.aggregate([
+   {
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
+  }
+], function (err, data) {
+        if (err) {
+          console.log(err);
+            callback(err, null);
+        }
+        console.log(data);
+        callback(null, data)
+    });
+ }
 };
 
 var jobsByCategory = function(category, callback){

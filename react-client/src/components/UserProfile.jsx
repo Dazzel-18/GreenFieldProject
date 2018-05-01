@@ -1,7 +1,7 @@
 import React from 'react';
 import {FormControl} from "react-bootstrap";
 import axios from 'axios';
-import JobsForUser from './JobsForUser.jsx';
+import JobList from './JobList.jsx';
 
 
 class UserProfile extends React.Component {
@@ -11,7 +11,7 @@ constructor(props) {
 
     this.state = {
       value: '',
-      user:'',
+      user:[],
       userJobs:[]
     };
 
@@ -24,10 +24,9 @@ constructor(props) {
     });
     var that = this;
     //some Info about user
-   axios.post('/findUser', {"userName": this.state.value})
+   axios.get('/findUser/'+this.state.value)
         .then(function(response){
           const posts = response.data;
-          console.log('ho ho ho  finally',posts)
             that.setState({user: posts});
         })
           .catch(function (error) {
@@ -37,7 +36,6 @@ constructor(props) {
     axios.get('/userJobss/'+this.state.value)
         .then(function(response){
           const posts = response.data;
-          console.log('ho ho ho  finally',posts)
             that.setState({userJobs: posts});
         })
           .catch(function (error) {
@@ -48,8 +46,8 @@ constructor(props) {
   render() {
     var arr = [];
   
-    this.state.userJobs.forEach(function(item) {
-      arr.push(<JobsForUser item={item} />)
+    this.state.userJobs.forEach(function(item,index) {
+      arr.push(<JobList key={index} item={item} />)
     })
     return (
       <div>

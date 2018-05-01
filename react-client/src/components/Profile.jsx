@@ -40,8 +40,9 @@ class Profile extends React.Component {
 render() {
   var arr = [];
   
-    this.state.jobs.map(function(item) {
-      arr.push(<JobsForUser item={item} />)
+
+    this.state.jobs.forEach(function(item,index) {
+      arr.push(<JobsForUser key={index} item={item} />)
     })
   
   
