@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+//import JobPage from './JobPage';
 class JobList extends React.Component {
   constructor(props) {
   	
@@ -19,7 +21,7 @@ render() {
   	<div id ='postDiv' className="jobsDiv container"><br />
   		<Row>
 			<Col md={4}>
-			<span><b>Name : </b></span>
+			<span><b>Job Provider : </b></span>
 			<span>{this.props.item.user}</span>
 			</Col>
 			<Col md={4}>
@@ -34,27 +36,7 @@ render() {
 		
         <Row>
             <Col md={4}>
-            <span><b>From : </b></span>
-			<span>{this.props.item.from}</span>
-			</Col>
-			<Col md={4}>
-			<span><b>To : </b></span>
-			<span>{this.props.item.to}</span>
-			</Col>
-			<Col md={4}>
-			<span><b>Phone Number : </b></span>
-			<span>{phonNum}</span>
-			</Col>	
-		</Row><br />
-
-		<Row>
-		<Col md={1}>
-		</Col>
-			<Col id="description" md={10}>
-			<span><b>Description : </b></span>
-			<span>{this.props.item.jobDescription}</span>
-			</Col>
-			<Col md={1}>
+            <span><Link to='/JobPage'>Show Details :</Link></span>
 			</Col>
 		</Row><br />
 
