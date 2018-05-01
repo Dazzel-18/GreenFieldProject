@@ -12,15 +12,22 @@ constructor(props) {
     this.state = {
       value: '',
       user:[],
-      userJobs:[]
+      userJobs:[],
+      test:false
     };
 
     this.SearchUser  = this.SearchUser.bind(this);
+    this.SearchButton = this.SearchButton.bind(this);
+    
   }
-
   SearchUser(e) {
     this.setState({
       value: e.target.value
+    });
+  }
+  SearchButton() {
+   this.setState({
+      test: true
     });
     var that = this;
     //some Info about user
@@ -49,7 +56,8 @@ constructor(props) {
     this.state.userJobs.forEach(function(item,index) {
       arr.push(<JobList key={index} item={item} />)
     })
-    return (
+    if( this.state.test===false){
+ return (
       <div>
       <FormControl
           id='catI'
@@ -60,14 +68,48 @@ constructor(props) {
           placeholder="Search"
           
         />
+        <button onClick={this.SearchButton} >Search</button>
         <br/>
         <br/>
-        <div>
-        {arr}
         </div>
+        )
+    }else{
+
+    
+    return (
+      <div>
+     <FormControl
+          id='catI'
+          className="Sform-control"
+          type="text"
+          value={this.state.value}
+          onChange={this.SearchUser}
+          placeholder="Search"
+          
+        />
+        <button onClick={this.SearchButton} >Search</button>
+        <br/>
+        <br/>
+     <div className="row " >
+     <div className="col-md-3 "  >
+        <img  src={this.state.user.image}/>
+        <h2>Name:{this.state.user.name}</h2> 
+        <h2>email:{this.state.user.email}</h2>
+        <h2>phoneNumber:{this.state.user.phoneNumber}</h2>
+    </div>
+
+    <div className="col-md-9">
+
+    <div>
+    {arr}
+    </div>
+
+    </div>
+     </div>
       </div>
     );
   }
+}
 }
 
 
