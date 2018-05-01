@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import JobsForUser from './JobsForUser.jsx';
 import UserInfo from './UserInfo.jsx';
+import {FormControl, Row, Col} from 'react-bootstrap';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +40,7 @@ class Profile extends React.Component {
 render() {
   var arr = [];
   
-    this.state.jobs.forEach(function(item) {
+    this.state.jobs.map(function(item) {
       arr.push(<JobsForUser item={item} />)
     })
   
@@ -47,12 +48,16 @@ render() {
   return (
   
     <div id="profile">
-    <div className="row container-fluid">
-    <div className="col-md-4 " >
-    <img src={this.state.user.image}/>
+    <div className="row noPadding" >
     
+     <div className="col-md-3 noPadding"  >
+        <img  src={this.state.user.image}/>
+        <h2>Name:{this.state.user.name}</h2> 
+        <h2>email:{this.state.user.email}</h2>
+        <h2>phoneNumber:{this.state.user.phoneNumber}</h2>
     </div>
-    <div className="col-md-8">
+
+    <div className="col-md-9">
 
     <div>
     {arr}
