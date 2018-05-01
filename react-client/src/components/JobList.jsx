@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-//import JobPage from './JobPage';
+import JobPage from '../components/JobPage.jsx';
 class JobList extends React.Component {
   constructor(props) {
   	
@@ -36,7 +36,7 @@ render() {
 		
         <Row>
             <Col md={4}>
-            <span><Link to='/JobPage'>Show Details :</Link></span>
+            <span><Link to={`/jobinfo/${ this.props.item._id}`} >Show Details :</Link></span>
 			</Col>
 		</Row><br />
 
