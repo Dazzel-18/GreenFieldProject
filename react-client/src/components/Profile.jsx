@@ -48,8 +48,8 @@ render() {
   return (
   
     <div id="profile">
+
     <div className="row " >
-    
      <div className="col-md-3 "  >
         <img  src={this.state.user.image}/>
         <h2>Name:{this.state.user.name}</h2> 

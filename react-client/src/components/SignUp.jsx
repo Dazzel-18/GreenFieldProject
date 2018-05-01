@@ -59,6 +59,7 @@ class SignUpForm extends React.Component {
       onChange = {this.onChange} 
       />
     </label>
+    
     </Col>
   <Col md={4}>
     <label id='signlable'>*Name
