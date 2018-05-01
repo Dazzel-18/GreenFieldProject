@@ -74,6 +74,28 @@ app.get('/jobs', function(req, res){
 		}
 	});	
 });
+
+
+
+app.get('/jobinfo/:jobid', function(req, res){
+	var jobid=req.params.jobid;
+
+	console.log(jobid)
+
+	//console.log(jobid)
+	Jobs.getJobById(jobid,function(err, job){
+
+		//console.log(job)
+		if(err){
+			console.log(err);
+		} else {
+			res.send(job);
+		}
+	});	
+});
+
+
+
 app.get('/logged', function(req, res){
 	if(req.session.userName){
 		res.send(true)
@@ -240,6 +262,8 @@ app.delete('/:jobTitle', function(req, res){
 		}
 	});
 });
+
+//a function to return 
 
 app.set('port', (process.env.PORT || 3000));
 

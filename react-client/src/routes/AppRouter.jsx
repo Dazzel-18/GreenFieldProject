@@ -11,7 +11,7 @@ import UserJobs from '../components/UserJobs.jsx';
 import Profile from '../components/Profile.jsx';
 import UserProfile from '../components/UserProfile.jsx';
 import axios from 'axios';
-//import JobPage from '../components/JobPage.jsx';
+import JobPage from '../components/JobPage.jsx';
 
 class AppRouter extends React.Component {
 constructor(props) {
@@ -52,7 +52,7 @@ axios.get('/logged')
 			<Route  path = "/Profile"	component = {Profile} />
 			<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
 			<Route  path = "/userProfile"	component = {UserProfile} />	
-			{/* <Route 	path = "/jobpage" component = {JobPage} /> */}
+			<Route 	path = "/jobinfo/:jobid" component = {JobPage} /> 
 
 
 

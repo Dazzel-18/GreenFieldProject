@@ -88,6 +88,19 @@ var jobByTitle = function (jobTitle, callback){
   });
 };
 
+
+
+
+var getJobById = function (jobId, callback){
+  Jobs.findOne({_id: jobId}, function(err, data){
+    if(err){
+      callback(err, null)
+    } else {
+    callback(null, data)
+  }
+  });
+};
+
 var getUserJob = function (jobTitle,user, callback){
   Jobs.findOne({"jobTitle": jobTitle,"user":user}, function(err, data){
     if(err){
@@ -96,6 +109,10 @@ var getUserJob = function (jobTitle,user, callback){
     callback(null, data)
   }
   });
+
+
+
+  
 };
 
 var findSome = function(title, callback){
@@ -263,3 +280,4 @@ module.exports.deleteJob = deleteJob;
 module.exports.findSome = findSome;
 module.exports.getUserJob = getUserJob;
 module.exports.updateUserJob = updateUserJob;
+module.exports.getJobById=getJobById;
