@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 
-
 class JobsForm extends React.Component {
 	constructor(props) {
 		super(props);
