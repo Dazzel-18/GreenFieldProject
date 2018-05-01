@@ -92,7 +92,7 @@ app.get('/userJobs', function(req, res){
 	});
 });
 app.get('/userJobss/:userName', function(req, res){
-	console.log(req.params.userName)
+	
 	Jobs.jobByUserName({"user": req.params.userName}, function(err, job){
 		if(err){
 			console.log(err);
@@ -124,7 +124,17 @@ app.put('/updateUserJob', function(req, res){
 		}
 	});
 });
-
+// search users
+app.get('/findUser/:userName', function (req, res) {
+	
+	Users.getUserInfo(req.params.userName, function(err, user){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(user);
+		}
+	});
+});
 app.get('/userInfo', function(req, res){
 		Users.getUserInfo(req.session.userName, function(err, user){
 		if(err){
@@ -207,17 +217,7 @@ app.post('/someJobs', function (req, res) {
 });
 
 
-// search users
-app.post('/findUser', function (req, res) {
-	
-	Users.findUserr({"userName":req.body.userName}, function(err, user){
-		if(err){
-			console.log(err);
-		} else {
-			res.send(user);
-		}
-	});
-});
+
 
 //it searches jobs by category
 app.post('/jobCategory', function (req, res) {
