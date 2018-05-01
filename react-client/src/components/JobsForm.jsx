@@ -125,14 +125,14 @@ class JobsForm extends React.Component {
 			</Col>
 			<Col md={3}>
 			<label >
-			<FormControl type = "date" name = "date" placeholder = "Date" autoFocus required onChange={this.onChange} />
+			<FormControl type = "date" name = "dateFrom" placeholder = "Date" autoFocus required onChange={this.onChange} />
 			</label> </Col>
 			<Col md={2}>
 			<span>To</span>
 			</Col>
 			<Col md={3}>
 			<label >
-			<FormControl type = "date" name = "date" placeholder = "Date" autoFocus required onChange={this.onChange} />
+			<FormControl type = "date" name = "dateTo" placeholder = "Date" autoFocus required onChange={this.onChange} />
 			</label></Col>
 			<Col md={1}>
 			</Col>
