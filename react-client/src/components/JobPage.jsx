@@ -52,114 +52,112 @@ componentDidMount(){
 render() {
 	return (
 		<div id="details" className="container wrapper well">
-		<div >
-		<br />
-		<h1>Job Info</h1>
-		<br />
-		<br />
-		<Row>
-		<Col md={2}>
-		</Col>
-		<Col md={3}>
-		<span id="x"> jobTitle : </span>
-		</Col>
-		<Col md={2} id="x">
-		{this.state.jobTitle}
-		</Col>
-		<Col md={3}>
-		<span id="x"> jobCategory : </span>
-		</Col>
-		<Col md={3} id="x">
-		{this.state.category}
-		</Col>
-		</Row><br />
-		
-		<Row>
-		<Col md={2}>
-		</Col>
-		<Col md={3}>
-		<span id="x"> JobDescription: </span>
-		</Col>
-		<Col md={2} id="x">
-		{this.state.jobDescription}
-		</Col>
-		</Row><br />
-
-		<Row>
-		<Col md={2}>
-		</Col>
-		<Col md={3} id="y">
-		Time:
-		</Col>
-		<Col md={2}>
-		<span id="y">From : </span>
-		</Col>
-		<Col md={1} id="y">
-		{this.state.from}
-		</Col>
-		<Col md={1}>
-		<span id="y"> To : </span>
-		</Col>
-		<Col md={1} id="y">
-		{this.state.to}
-		</Col>
-		</Row><br />
-
-		<Row>
-		<Col md={2}>
-		</Col>
-		<Col md={3} id="y">
-		Date:
-		</Col>
-		<Col md={2}>
-		<span id="y"> From : </span>
-		</Col>
-		<Col md={1} id="y">
-		{this.state.dateFrom}
-		</Col>
-		<Col md={1}>
-		<span id="y"> To : </span>
-		</Col>
-		<Col md={2} id="y">
-		{this.state.dateTo}
-		</Col>
-		</Row><br />
-		</div>
-		<hr/>
-
-		<br />
-		<br />
-		<h1> Job provider Info</h1>
-		<br />
-		<br />
-		<Row>
-		<Col md={2}>
-		</Col>
-		<Col md={3}>
-		<span id="x"> Job Provider:</span>
-		</Col>
-		<Col md={2} id="x">
-		{this.state.user}
-		</Col>
-		<Col md={2}>
-		<span id="x">PhoneNumber:</span>
-		</Col>
-		<Col md={1} id="x">
-		{this.state.phoneNumber}
-		</Col>
-		</Row><br />
+			<div id="divv">
+			<br />
+			<h1>Job Info</h1>
+			<br />
+			<br />
+			<Row>
+			<Col md={2}>
+			</Col>
+			<Col md={3}>
+			<span id="x"> jobTitle : </span>
+			</Col>
+			<Col md={2} id="x">
+			{this.state.jobTitle}
+			</Col>
+			<Col md={3}>
+			<span id="x"> jobCategory : </span>
+			</Col>
+			<Col md={3} id="x">
+			{this.state.category}
+			</Col>
+			</Row><br />
 			
-		
+			<Row>
+			<Col md={2}>
+			</Col>
+			<Col md={3}>
+			<span id="x"> JobDescription: </span>
+			</Col>
+			<Col md={2} id="x">
+			{this.state.jobDescription}
+			</Col>
+			</Row><br />
+
+			<Row>
+			<Col md={2}>
+			</Col>
+			<Col md={3} id="y">
+			Time:
+			</Col>
+			<Col md={2}>
+			<span id="y">From : </span>
+			</Col>
+			<Col md={1} id="y">
+			{this.state.from}
+			</Col>
+			<Col md={1}>
+			<span id="y"> To : </span>
+			</Col>
+			<Col md={1} id="y">
+			{this.state.to}
+			</Col>
+			</Row><br />
+
+			<Row>
+			<Col md={2}>
+			</Col>
+			<Col md={3} id="y">
+			Date:
+			</Col>
+			<Col md={2}>
+			<span id="y"> From : </span>
+			</Col>
+			<Col md={1} id="y">
+			{this.state.dateFrom}
+			</Col>
+			<Col md={1}>
+			<span id="y"> To : </span>
+			</Col>
+			<Col md={2} id="y">
+			{this.state.dateTo}
+			</Col>
+			</Row><br />
+			</div>
+			<hr/>
+
+			<div id="divv">
+			<br />
+			<br />
+			<h1> Job provider Info</h1>
+			<br />
+			<br />
+			<Row>
+			<Col md={2}>
+			</Col>
+			<Col md={3}>
+			<span id="x"> Job Provider:</span>
+			</Col>
+			<Col md={2} id="x">
+			{this.state.user}
+			</Col>
+			<Col md={2}>
+			<span id="x">PhoneNumber:</span>
+			</Col>
+			<Col md={1} id="x">
+			{this.state.phoneNumber}
+			</Col>
+			</Row><br />
+			<br />
+			</div>
+			<br />
 			<div>
-				<button>show interest</button>
-			 </div>
+				<button  id="but">show interest</button>
+				<button  id="but">Assign the job</button>
+			</div>
 
-
-			 <div>
-				<button>Assign the job</button>
-			 </div>
-			 
-		 </div>
+		</div>
 
 	)
   }
