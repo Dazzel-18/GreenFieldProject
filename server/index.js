@@ -133,6 +133,7 @@ app.post('/userJob', function(req, res){
 	});
 });
 
+
 //it updates the user job
 app.put('/updateUserJob', function(req, res){
 	Jobs.updateUserJob(req.body.jobTitle,req.body.states.user,req.body.states, function(err, user){
@@ -192,6 +193,25 @@ app.post("/signup",function(req, res){
 	});
 });
 
+app.post('/rating',function(req,res){
+	console.log(req.body.userName)
+	Users.findRate(req.body,function(err,result){
+		console.log('aaaa',result)
+		if (!err && result) {
+			console.log('aaaa',result.rating.numberOfRater)
+			console.log('aaaassa',result.rating.Total)
+		        result.rating.numberOfRater++ ;// update ur values goes here
+		        result.rating.Total += req.body.Total;
+		        res.send(result);
+		        
+	       } 
+	       else {
+	       	res.status(500);
+	       	res.send(err);
+       	   }
+
+	})
+})
 // destroys sessions when logout
 app.get('/logout', function (req, res) {
 	req.session.destroy();

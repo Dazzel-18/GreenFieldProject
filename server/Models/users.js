@@ -28,10 +28,7 @@ var usersSchema = mongoose.Schema({
       },
   nationality: String,
 
-  rating:{
-    type:Number
-    
-  },
+  rating:Number,
   image:{
     type:String
   }
@@ -77,8 +74,6 @@ var retriveALlUsers=function(callback){
 
 
 
-
-
 var getUser = function(userName, password, callback){
   ///query for checking the usename
   var query = Users.where({ userName: userName });
@@ -117,6 +112,21 @@ var getUserInfo= function(userName, callback){
       }
   });
 };
+var findRate= function(data,callback){
+  var rateUSer = new Users({
+    rating:data.rating,
+  })
+  
+  rateUSer.save(function(err,data){
+    if(err){
+      callback(err)
+    }
+    else{
+      callback(null,data)
+    }
+  })
+
+}
 var updateUsers = function(userName, updatedData, callback){
   Users.findOneAndUpdate({userName: userName}, {$set: updatedData}, callback)
 };
@@ -132,5 +142,4 @@ module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
 module.exports.retriveALlUsers=retriveALlUsers;
-
-
+module.exports.findRate=findRate;

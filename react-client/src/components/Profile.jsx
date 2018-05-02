@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import JobsForUser from './JobsForUser.jsx';
 import UserInfo from './UserInfo.jsx';
-import {FormControl, Row, Col} from 'react-bootstrap';
+import {FormControl, Row, Col,Button} from 'react-bootstrap';
 import StarRatingComponent from 'react-star-rating-component';
 class Profile extends React.Component {
   constructor(props) {
@@ -14,9 +14,8 @@ class Profile extends React.Component {
       myJobs:[],
       rating: 0
     }
+    this.sendRate=this.sendRate.bind(this);
   }
-
-
 //make new get requests for each filter
   componentDidMount() {
     var that =this;
@@ -32,19 +31,24 @@ class Profile extends React.Component {
     .then(response => {
     const posts = response.data;
     that.setState({user:posts});
-    console.log(that.state.user.image)
+   
   }).catch(function (error) {
     console.log(error);
   });
-  
 }
-
+  sendRate(){
+    var that=this;
+    axios.post('/rating',{rating:that.state.rating ,userName:this.state.user.name})
+  .then(response=>{
+    console.log(rating)
+  }).catch(function (error){
+    console.log(error);
+  });
+  
+  }
   onStarClick(nextValue, prevValue, name) {
-    console.log(nextValue,prevValue)
     this.setState({rating: nextValue});
   }
-
-
 render() {
   var arr = [];
   
@@ -71,7 +75,7 @@ render() {
             starCount={10}
             value={this.state.rating}
             onStarClick={this.onStarClick.bind(this)}
-          />
+          /><Button  onClick ={this.sendRate} type="submit" bsStyle="primary" bsSize="small">AddRate</Button> 
       </div>
     </div>
          

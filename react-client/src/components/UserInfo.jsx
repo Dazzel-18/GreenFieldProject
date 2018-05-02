@@ -31,7 +31,6 @@ class UserInfo extends React.Component {
    	  axios.get('/userInfo')
     .then(response => {
     const posts = response.data;
-    console.log(posts);
     that.setState({states:posts});
     
   })
