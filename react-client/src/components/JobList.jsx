@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { Button, FormControl, Row, Col, ButtonToolbar } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-
 import JobPage from '../components/JobPage.jsx';
-
-
-
-//import JobPage from './JobPage';
+//import JobPage from './JobPage.jsx';
 
 import axios from 'axios';
 
@@ -128,40 +124,39 @@ render() {
        
 		<Row>
             <Col md={4}>
-        <span>
-        {this.state.arr.map(function(a){
+        	<span>
+        	{this.state.arr.map(function(a){
         	return(
-        		<div>
-        		<span><b>Name : </b></span>
-        		<span>{a.username}</span>
-			<span><b>comment : </b></span>
-			<span>{a.text}</span>
+        	<div id="divComment">
+        	<span id="span1">{a.username} : </span>
+			<span id="span2">{a.text}</span>
+			<br/>
 			</div>
         		)
-        })}
-        </span>
+       		})}
+       	 	</span>
 			</Col>
 		</Row><br />
 		<Row>
             <Col md={4}>
             <span><FormControl
-          id='catI'
-          className="Sform-control"
-          type="text"
-          value={this.state.value}
-          onChange={this.onChange}
-          placeholder="Write Comment"
+          	id='catI'
+          	className="Sform-control"
+          	type="text"
+          	value={this.state.value}
+          	onChange={this.onChange}
+          	placeholder="Write Comment"
           
-        />
-        <button onClick={this.addComment} >Add Comment</button>
-        <br/>
-        <br/></span>
+        	/>
+			<button onClick={this.addComment} >Add Comment</button>
+			<br/>
+			<br/></span>
 			</Col>
 		</Row><br />
 		 <Row>
-		 <Col md={8}>
+		 	<Col md={8}>
 			</Col>
-		 <Col id='postTime' md={4}>
+			 <Col id='postTime' md={4}>
 			<span><b>Posted at : </b></span>
 			<span>{this.props.item.created_at.slice(0, 10)}</span>
 			</Col>
