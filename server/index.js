@@ -132,7 +132,16 @@ app.post('/userJob', function(req, res){
 		}
 	});
 });
-
+//it add a new comment for this User
+app.post('/comment', function(req, res){
+	console.log('cccoommment',req.body.states.user)
+	Jobs.createComment(req.body.states,function(err,comment){
+    if(err){
+      res.send(err)
+    }
+  res.json(comment)
+	})
+});
 //it updates the user job
 app.put('/updateUserJob', function(req, res){
 	Jobs.updateUserJob(req.body.jobTitle,req.body.states.user,req.body.states, function(err, user){
