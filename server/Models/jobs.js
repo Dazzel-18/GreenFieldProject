@@ -16,6 +16,10 @@ var jobsSchema = mongoose.Schema({
     type: String,
     require:true
   },
+  salary: {
+    type: String,
+    require:true
+  },
   from: String,
   to: String,
   dateTo:Date,
@@ -24,24 +28,47 @@ var jobsSchema = mongoose.Schema({
   {
     type:Date,
     default:Date.now
-  },
+  }, 
   dateFrom: String,
   dateTo: String,
-  comments:{
-  	type:[{username:String,comment:String}],
-   },
+
+
 
    interestedUsers:{
-   	type:[String]
+    type:[String]
    },
 
    takenBy:{
-   	type:String
+    type:String
 
    }
 
 });
 
+
+var InterestSchema= mongoose.Schema({
+  username: {
+    type:String,
+    index: {unique: true }
+  },
+  jobId: {
+    type:String,
+  }
+})
+
+var Interests= mongoose.model("Interests", InterestSchema)
+
+
+
+var commentsSchema= mongoose.Schema({
+  username: String,
+  text: String,
+  idJob: String
+
+
+})
+
+var Comments= mongoose.model("Comments", commentsSchema)
 
 /////Jobs Model
 var Jobs = mongoose.model('Jobs', jobsSchema);
@@ -57,7 +84,7 @@ var createJob = function(userName,data, callback){
 var allJobs = function (callback){
    Jobs.aggregate([
 
-   	{$sort:
+    {$sort:
        {created_at:-1}
     },
    {
@@ -74,7 +101,6 @@ var allJobs = function (callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
         callback(null, data)
     });
 };
@@ -88,8 +114,6 @@ var jobByTitle = function (jobTitle, callback){
   }
   });
 };
-
-
 
 
 var getJobById = function (jobId, callback){
@@ -113,10 +137,14 @@ Jobs.aggregate([
           console.log(err);
             callback(err, null);
         }
-        //console.log("get data",data);
+       // console.log("get data",data);
         callback(null, data)
     });
 }
+
+
+
+
 
 
 var getUserJob = function (jobTitle,user, callback){
@@ -156,7 +184,6 @@ var regexValue = '\.*'+title+'\.*';
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
         callback(null, data)
     });
   
@@ -181,7 +208,6 @@ var jobByUserName = function(user, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
         callback(null, data)
     });
  }else{
@@ -200,7 +226,6 @@ var jobByUserName = function(user, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
         callback(null, data)
     });
  }
@@ -226,7 +251,6 @@ var jobsByCategory = function(category, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
         callback(null, data)
     });
  }else{
@@ -245,7 +269,6 @@ var jobsByCategory = function(category, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
         callback(null, data)
     });
  }
@@ -271,7 +294,6 @@ var jobsByEndTime = function(to, callback){
   }
   });
 };
-
 var updateUserJob = function(jobTitle,user, updatedData, callback){
   Jobs.findOneAndUpdate({jobTitle: jobTitle,user:user}, {$set: updatedData}, callback)
 };
@@ -282,10 +304,76 @@ var updateJobs = function(jobTitle, updatedData, callback){
 var deleteJob = function(jobTitle, callback){
   Jobs.deleteOne({jobTitle: jobTitle}, callback)
 };
+var createComment=function(comment,userName,callback){  
+  var comment=new Comments({
+    username:userName.userName,
+    text: comment.comments,
+    idJob: comment._id,
+  })
 
+  comment.save(function(err){
+    if(err){
+      callback(err)
+    }
+  callback(null,comment)
+
+  })
+
+}
+var findComment = function (id, callback){
+  Comments.find(function(err, data){
+    if(err){
+      callback(err, null)
+    } else {
+      var arr=[];
+      for(var i=0;i<data.length;i++){
+        console.log(data[i].idJob)
+        
+        if(id.id===data[i].idJob){
+          arr.push(data[i])
+        }
+      }
+      console.log(arr)
+    callback(null, arr)
+  }
+  });
+};
+
+
+
+var createJobInterest=function(jobId,loggedUser,callback){
+  var interest=new Interests({
+    username:loggedUser,
+    jobId: jobId
+  })
+
+  interest.save(function(err){
+    if(err){
+      callback(err)
+    }
+  callback(null,interest)
+
+  })
+ }
+
+
+
+ var getInterestUsers=function(jobId,callback){
+  Interests.find({jobId:jobId},function(err,data){
+
+    if(err)
+      callback(err,null);
+    else{
+
+     callback(null,data);
+    }
+  })
+
+ }
 
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
+module.exports.Comments = Comments;
 module.exports.createJob = createJob;
 module.exports.allJobs = allJobs;
 module.exports.jobByTitle = jobByTitle;
@@ -299,3 +387,8 @@ module.exports.findSome = findSome;
 module.exports.getUserJob = getUserJob;
 module.exports.updateUserJob = updateUserJob;
 module.exports.getJobById=getJobById;
+module.exports.createComment = createComment;
+module.exports.findComment = findComment;
+module.exports.createJobInterest=createJobInterest;
+module.exports.getInterestUsers=getInterestUsers;
+

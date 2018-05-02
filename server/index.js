@@ -132,7 +132,28 @@ app.post('/userJob', function(req, res){
 		}
 	});
 });
+//it add a new comment for this User
+app.post('/comment', function(req, res){
+	Jobs.createComment(req.body.states,{"userName":req.session.userName},function(err,comment){
+    if(err){
+      res.send(err)
+    }
+  res.json(comment)
+	})
+});
 
+
+
+app.get('/comment/:id', function(req, res){
+	console.log('uidddd',req.params.id)
+	Jobs.findComment({"id": req.params.id},function(err,comment){
+    if(err){
+      res.send(err)
+    }
+   // console.log('cccoommment',comment)
+  res.json(comment)
+	})
+});
 
 //it updates the user job
 app.put('/updateUserJob', function(req, res){
@@ -281,7 +302,66 @@ app.delete('/:jobTitle', function(req, res){
 	});
 });
 
-//a function to return 
+
+// get user in the session
+app.get('/job/interest',function(req,res){
+	res.status(200);
+	res.send(req.session.userName);
+
+})
+
+
+app.get('/interest/:jobid',function(req,res){
+	var jobId=req.params.jobid;
+	// console.log(jobId);
+	Jobs.getInterestUsers(jobId,function(err,data){
+		if(err) {
+			res.status(500);
+			res.send(err);
+		}
+		else{
+			console.log(data);
+			res.status(200);
+			res.send(data);
+		}
+	})
+
+})
+
+app.get('/job/interest/:jobid',function(req,res){
+	
+	var id=req.params.jobid;
+
+	var loggedUser=req.session.userName;
+
+	Jobs.createJobInterest(id,loggedUser,function(err,user){
+		if(err){
+			console.log("err");
+		}
+		console.log("success");
+
+
+	})
+})
+
+app.get('/jobinfo/:jobid', function(req, res){
+	var jobid=req.params.jobid;
+
+	console.log(jobid)
+
+	//console.log(jobid)
+	Jobs.getJobById(jobid,function(err, job){
+
+	
+		if(err){
+			console.log(err);
+		} else {
+			//console.log(job[0].userInfo);
+			res.send(job);
+		}
+	});	
+});
+
 
 app.set('port', (process.env.PORT || 3000));
 
