@@ -24,12 +24,7 @@ var jobsSchema = mongoose.Schema({
   {
     type:Date,
     default:Date.now
-  },
-  dateFrom: String,
-  dateTo: String,
-  comments:{
-  	type:[{username:String,comment:String}],
-   },
+  }, 
 
    interestedUsers:{
    	type:[String]
@@ -42,6 +37,12 @@ var jobsSchema = mongoose.Schema({
 
 });
 
+var commentsSchema= mongoose.Schema({
+  username: String,
+  text: String
+})
+
+var Comments= mongoose.model("Comments", commentsSchema)
 
 /////Jobs Model
 var Jobs = mongoose.model('Jobs', jobsSchema);
@@ -271,8 +272,8 @@ var jobsByEndTime = function(to, callback){
   }
   });
 };
-
 var updateUserJob = function(jobTitle,user, updatedData, callback){
+  console.log('ups',updatedData)
   Jobs.findOneAndUpdate({jobTitle: jobTitle,user:user}, {$set: updatedData}, callback)
 };
 var updateJobs = function(jobTitle, updatedData, callback){
@@ -282,10 +283,27 @@ var updateJobs = function(jobTitle, updatedData, callback){
 var deleteJob = function(jobTitle, callback){
   Jobs.deleteOne({jobTitle: jobTitle}, callback)
 };
+var createComment=function(comment,callback){
+  console.log("req,commmetn",comment);
+  
+  var comment=new Comments({
+    username:comment.user,
+    text: comment.comments
+  })
 
+  comment.save(function(err){
+    if(err){
+      callback(err)
+    }
+  callback(null,comment)
+
+  })
+
+}
 
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
+module.exports.Comments = Comments;
 module.exports.createJob = createJob;
 module.exports.allJobs = allJobs;
 module.exports.jobByTitle = jobByTitle;
@@ -299,3 +317,4 @@ module.exports.findSome = findSome;
 module.exports.getUserJob = getUserJob;
 module.exports.updateUserJob = updateUserJob;
 module.exports.getJobById=getJobById;
+module.exports.createComment = createComment;
