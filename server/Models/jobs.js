@@ -75,7 +75,7 @@ var allJobs = function (callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
+        console.log(data);
         callback(null, data)
     });
 };
@@ -94,31 +94,14 @@ var jobByTitle = function (jobTitle, callback){
 
 
 var getJobById = function (jobId, callback){
-
-Jobs.aggregate([
-
-   { $match: {'_id':mongoose.Types.ObjectId(jobId)} },
-  
-   {
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-   }
-
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
-        }
-        //console.log("get data",data);
-        callback(null, data)
-    });
-}
-
+  Jobs.findOne({_id: jobId}, function(err, data){
+    if(err){
+      callback(err, null)
+    } else {
+    callback(null, data)
+  }
+  });
+};
 
 var getUserJob = function (jobTitle,user, callback){
   Jobs.findOne({"jobTitle": jobTitle,"user":user}, function(err, data){
@@ -157,7 +140,7 @@ var regexValue = '\.*'+title+'\.*';
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
+        console.log(data);
         callback(null, data)
     });
   
@@ -182,7 +165,7 @@ var jobByUserName = function(user, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
+        console.log(data);
         callback(null, data)
     });
  }else{
@@ -201,7 +184,7 @@ var jobByUserName = function(user, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
+        console.log(data);
         callback(null, data)
     });
  }
@@ -227,7 +210,7 @@ var jobsByCategory = function(category, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
+        console.log(data);
         callback(null, data)
     });
  }else{
@@ -246,7 +229,7 @@ var jobsByCategory = function(category, callback){
           console.log(err);
             callback(err, null);
         }
-        //console.log(data);
+        console.log(data);
         callback(null, data)
     });
  }
