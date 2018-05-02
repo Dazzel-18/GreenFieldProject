@@ -305,6 +305,25 @@ app.get('/job/interest/:jobId',function(req,res){
 	})
 })
 
+app.get('/jobinfo/:jobid', function(req, res){
+	var jobid=req.params.jobid;
+
+	console.log(jobid)
+
+	//console.log(jobid)
+	Jobs.getJobById(jobid,function(err, job){
+
+	
+		if(err){
+			console.log(err);
+		} else {
+			//console.log(job[0].userInfo);
+			res.send(job);
+		}
+	});	
+});
+
+
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function() {

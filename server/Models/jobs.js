@@ -118,15 +118,49 @@ var jobByTitle = function (jobTitle, callback){
 
 
 
+// var getJobById = function (jobId, callback){
+//   Jobs.findOne({_id: jobId}, function(err, data){
+//     if(err){
+//       callback(err, null)
+//     } else {
+//     callback(null, data)
+//   }
+//   });
+// };
+
+
+
+
 var getJobById = function (jobId, callback){
-  Jobs.findOne({_id: jobId}, function(err, data){
-    if(err){
-      callback(err, null)
-    } else {
-    callback(null, data)
-  }
-  });
-};
+
+Jobs.aggregate([
+
+   { $match: {'_id':mongoose.Types.ObjectId(jobId)} },
+  
+   {
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
+   }
+
+], function (err, data) {
+        if (err) {
+          console.log(err);
+            callback(err, null);
+        }
+       // console.log("get data",data);
+        callback(null, data)
+    });
+}
+
+
+
+
+
 
 var getUserJob = function (jobTitle,user, callback){
   Jobs.findOne({"jobTitle": jobTitle,"user":user}, function(err, data){

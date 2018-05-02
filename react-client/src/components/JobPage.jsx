@@ -34,7 +34,7 @@ componentDidMount(){
 	 axios.get(`/jobinfo/${this.props.match.params.jobid}`)
     .then(response => {
     const jobInfo = response.data[0];
-    //console.log(jobInfo);
+    console.log(jobInfo);
     this.setState({
     	jobTitle:jobInfo.jobTitle,
     	category:jobInfo.category,
@@ -43,7 +43,7 @@ componentDidMount(){
 		jobDescription:jobInfo.jobDescription,
 		dateFrom:jobInfo.dateFrom,
 		dateTo:jobInfo.dateTo,
-		user:jobInfo.userInfo.name,
+		user:jobInfo.userInfo[0].userName,
 		phoneNumber:jobInfo.userInfo[0].phoneNumber,
 		jobId:this.props.match.params.jobid
  
@@ -62,11 +62,11 @@ componentDidMount(){
 
 
 handleInterests(){
-	console.log(this.state.jobId);
+	//console.log(this.state.jobId);
 	 axios.get('/job/interest')
     .then(response => {
     const loggedUser = response.data;
-    console.log(loggedUser===this.state.user);
+    //console.log(loggedUser===this.state.user);
 
     this.setState({
     	loggedUser:loggedUser
@@ -76,6 +76,8 @@ handleInterests(){
   .catch(function (error) {
     console.log(error);
   });
+
+  console.log(this.state.jobTitle)
 
 }
 
@@ -206,13 +208,12 @@ render() {
 			</div>
 			<br />
 			
-
-		</div>
-
 			{this.state.loggedUser!==this.state.user?<div>
 				<button id="but" onClick={this.insertInterests}>show interest</button></div>:
 				 <div><button id="but" >Assign the job</button>
-			 </div>
+			 </div>}
+
+		</div>
 
 		
 
