@@ -16,6 +16,7 @@ class JobList extends React.Component {
     super(props);
 
     this.state={ states:{
+    	_id:'',
       user: '',
       jobTitle: '',
       jobDescription: '',
@@ -23,7 +24,8 @@ class JobList extends React.Component {
       from: '',
       to: '',
   	  comments:[]},
-      message:''
+      message:'',
+      arr:[]
     }
     
     this.addComment = this.addComment.bind(this);
@@ -34,6 +36,7 @@ class JobList extends React.Component {
   onChange(e){
   	this.setState({
   		states:{
+  		_id:this.props.item._id,
   		user:this.props.item.user,
     	jobTitle:this.props.item.jobTitle,
     	jobDescription:this.props.item.jobDescription,
@@ -41,7 +44,8 @@ class JobList extends React.Component {
     	from:this.props.item.from,
     	to:this.props.item.to,
   		comments:e.target.value,
-  	}
+  	},
+  	message:''
   	})
   }
 addComment(event) {
@@ -49,15 +53,29 @@ addComment(event) {
 	console.log(this.state.states)
 		var that=this;
 		event.preventDefault();
-		axios.post('/comment/' ,{states:this.state.states})
+		axios.post('/comment' ,{states:this.state.states})
   			.then(function (response) {
-  				that.setState({message:"Update"}); 
+  				that.setState({message:"sendComment"}); 
     		
   			})
   			.catch(function (error) {
     		console.log(error);
-  			});		
+  			});	
+
+  			event.preventDefault();
+		axios.get('/comment/'+this.props.item._id)
+  			.then(function (response) {
+  				const posts = response.data;
+				that.setState({arr:posts});
+  				that.setState({message:"Update"}); 
+    			console.log(that.state.arr)
+  			})
+  			.catch(function (error) {
+    		console.log(error);
+  			});	
 		};
+
+        
 render() {
 	let phonNum=0;
 	if(this.props.item.userInfo.length>0){
@@ -108,7 +126,22 @@ render() {
 			</Col>
 		</Row><br />		
        
-
+		<Row>
+            <Col md={4}>
+        <span>
+        {this.state.arr.map(function(a){
+        	return(
+        		<div>
+        		<span><b>Name : </b></span>
+        		<span>{a.username}</span>
+			<span><b>comment : </b></span>
+			<span>{a.text}</span>
+			</div>
+        		)
+        })}
+        </span>
+			</Col>
+		</Row><br />
 		<Row>
             <Col md={4}>
             <span><FormControl
