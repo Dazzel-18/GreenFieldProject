@@ -289,9 +289,26 @@ app.get('/job/interest',function(req,res){
 })
 
 
-app.get('/job/interest/:jobId',function(req,res){
+app.get('/interest/:jobid',function(req,res){
+	var jobId=req.params.jobid;
+	// console.log(jobId);
+	Jobs.getInterestUsers(jobId,function(err,data){
+		if(err) {
+			res.status(500);
+			res.send(err);
+		}
+		else{
+			console.log(data);
+			res.status(200);
+			res.send(data);
+		}
+	})
+
+})
+
+app.get('/job/interest/:jobid',function(req,res){
 	
-	var id=req.params.jobId;
+	var id=req.params.jobid;
 
 	var loggedUser=req.session.userName;
 

@@ -116,21 +116,6 @@ var jobByTitle = function (jobTitle, callback){
 };
 
 
-
-
-// var getJobById = function (jobId, callback){
-//   Jobs.findOne({_id: jobId}, function(err, data){
-//     if(err){
-//       callback(err, null)
-//     } else {
-//     callback(null, data)
-//   }
-//   });
-// };
-
-
-
-
 var getJobById = function (jobId, callback){
 
 Jobs.aggregate([
@@ -371,6 +356,21 @@ var createJobInterest=function(jobId,loggedUser,callback){
   })
  }
 
+
+
+ var getInterestUsers=function(jobId,callback){
+  Interests.find({jobId:jobId},function(err,data){
+
+    if(err)
+      callback(err,null);
+    else{
+
+     callback(null,data);
+    }
+  })
+
+ }
+
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
 module.exports.Comments = Comments;
@@ -390,4 +390,5 @@ module.exports.getJobById=getJobById;
 module.exports.createComment = createComment;
 module.exports.findComment = findComment;
 module.exports.createJobInterest=createJobInterest;
+module.exports.getInterestUsers=getInterestUsers;
 
