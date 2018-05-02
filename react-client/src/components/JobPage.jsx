@@ -8,6 +8,7 @@ class JobPage extends React.Component {
 
 	this.state={
 		// job info
+		jobId:'',
 		jobTitle:'',
 		category:'',
 		jobDescription:'',
@@ -20,7 +21,12 @@ class JobPage extends React.Component {
 		// userinfo
 		user:'',
 		phoneNumber:0,
+		loggedUser:'',
+
   }
+
+  this.handleInterests=this.handleInterests.bind(this);
+  this.insertInterests=this.insertInterests.bind(this);
 
 }
 
@@ -38,9 +44,14 @@ componentDidMount(){
 		dateFrom:jobInfo.dateFrom,
 		dateTo:jobInfo.dateTo,
 		user:jobInfo.userInfo.name,
-		phoneNumber:jobInfo.userInfo.phoneNumber,
+		phoneNumber:jobInfo.userInfo[0].phoneNumber,
+		jobId:this.props.match.params.jobid
+ 
 
     })
+
+        this.handleInterests();
+
     
   })
   .catch(function (error) {
@@ -48,7 +59,49 @@ componentDidMount(){
   });
 
 }
+
+
+handleInterests(){
+	console.log(this.state.jobId);
+	 axios.get('/job/interest')
+    .then(response => {
+    const loggedUser = response.data;
+    console.log(loggedUser===this.state.user);
+
+    this.setState({
+    	loggedUser:loggedUser
+    })
+  
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
  
+
+
+
+insertInterests(){
+
+	//console.log(this.state.jobId);
+	axios.get(`/job/interest/${this.state.jobId}`)
+
+	.then(response => {
+	    //const loggedUser = response.data;
+	    //console.log(loggedUser===this.state.user);
+
+	    console.log("success");
+	  
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+
+
+}
+
 render() {
 	return (
 		<div id="details" className="container wrapper well">
@@ -153,11 +206,21 @@ render() {
 			</div>
 			<br />
 			<div>
+<<<<<<< 78afa13001c0b37da12eb302da5e8bb4b7b6a83b
 				<button  id="but">show interest</button>
 				<button  id="but">Assign the job</button>
 			</div>
 
 		</div>
+=======
+			{this.state.loggedUser!==this.state.user?<div>
+				<button onClick={this.insertInterests}>show interest</button></div>:
+				 <div><button onClick={}>Assign the job</button>
+			 </div>
+
+			</div>
+		 </div>
+>>>>>>> save interested users of each job in db
 
 	)
   }

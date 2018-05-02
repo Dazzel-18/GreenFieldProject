@@ -45,6 +45,21 @@ var jobsSchema = mongoose.Schema({
 
 });
 
+
+var InterestSchema= mongoose.Schema({
+  username: {
+    type:String,
+    index: {unique: true }
+  },
+  jobId: {
+    type:String,
+  }
+})
+
+var Interests= mongoose.model("Interests", InterestSchema)
+
+
+
 var commentsSchema= mongoose.Schema({
   username: String,
   text: String,
@@ -305,6 +320,23 @@ var findComment = function (id, callback){
   });
 };
 
+
+
+var createJobInterest=function(jobId,loggedUser,callback){
+  var interest=new Interests({
+    username:loggedUser,
+    jobId: jobId
+  })
+
+  interest.save(function(err){
+    if(err){
+      callback(err)
+    }
+  callback(null,interest)
+
+  })
+ }
+
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
 module.exports.Comments = Comments;
@@ -323,4 +355,5 @@ module.exports.updateUserJob = updateUserJob;
 module.exports.getJobById=getJobById;
 module.exports.createComment = createComment;
 module.exports.findComment = findComment;
+module.exports.createJobInterest=createJobInterest;
 

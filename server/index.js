@@ -280,7 +280,30 @@ app.delete('/:jobTitle', function(req, res){
 	});
 });
 
-//a function to return 
+
+// get user in the session
+app.get('/job/interest',function(req,res){
+	res.status(200);
+	res.send(req.session.userName);
+
+})
+
+
+app.get('/job/interest/:jobId',function(req,res){
+	
+	var id=req.params.jobId;
+
+	var loggedUser=req.session.userName;
+
+	Jobs.createJobInterest(id,loggedUser,function(err,user){
+		if(err){
+			console.log("err");
+		}
+		console.log("success");
+
+
+	})
+})
 
 app.set('port', (process.env.PORT || 3000));
 
