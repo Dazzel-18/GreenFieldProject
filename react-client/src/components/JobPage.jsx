@@ -52,53 +52,104 @@ componentDidMount(){
 render() {
 	return (
 		<div id="details" className="container wrapper well">
-		Job Info
-			<div> jobTitle :
-			{this.state.jobTitle}
-			</div>
-
-			<div> jobCategory :
-			{this.state.category}
-			</div>
-			<div> JobDescription
-			{this.state.jobDescription}
-			</div>
-
-			<div> Time :
-			<div> From :
-			{this.state.from}
-			</div>
-
-			<div> To :
-			{this.state.to}
-			</div>
-			</div>
-
-			<div> Date :
-			<div> From :
-			{this.state.dateFrom}
-			</div>
+		<div >
+		<br />
+		<h1>Job Info</h1>
+		<br />
+		<br />
+		<Row>
+		<Col md={2}>
+		</Col>
+		<Col md={3}>
+		<span id="x"> jobTitle : </span>
+		</Col>
+		<Col md={2} id="x">
+		{this.state.jobTitle}
+		</Col>
+		<Col md={3}>
+		<span id="x"> jobCategory : </span>
+		</Col>
+		<Col md={3} id="x">
+		{this.state.category}
+		</Col>
+		</Row><br />
 		
-		<div> To :
-			{this.state.dateTo}
+		<Row>
+		<Col md={2}>
+		</Col>
+		<Col md={3}>
+		<span id="x"> JobDescription: </span>
+		</Col>
+		<Col md={2} id="x">
+		{this.state.jobDescription}
+		</Col>
+		</Row><br />
+
+		<Row>
+		<Col md={2}>
+		</Col>
+		<Col md={3} id="y">
+		Time:
+		</Col>
+		<Col md={2}>
+		<span id="y">From : </span>
+		</Col>
+		<Col md={1} id="y">
+		{this.state.from}
+		</Col>
+		<Col md={1}>
+		<span id="y"> To : </span>
+		</Col>
+		<Col md={1} id="y">
+		{this.state.to}
+		</Col>
+		</Row><br />
+
+		<Row>
+		<Col md={2}>
+		</Col>
+		<Col md={3} id="y">
+		Date:
+		</Col>
+		<Col md={2}>
+		<span id="y"> From : </span>
+		</Col>
+		<Col md={1} id="y">
+		{this.state.dateFrom}
+		</Col>
+		<Col md={1}>
+		<span id="y"> To : </span>
+		</Col>
+		<Col md={2} id="y">
+		{this.state.dateTo}
+		</Col>
+		</Row><br />
 		</div>
 		<hr/>
 
-		<div>
-		Job provider Info
-			<div> Job Provider :
-				{this.state.user}
-			</div>
-
-			<div> PhoneNumber:
-				{this.state.phoneNumber}
-			</div>
-		</div>
-
-
-		</div>	
-
+		<br />
+		<br />
+		<h1> Job provider Info</h1>
+		<br />
+		<br />
+		<Row>
+		<Col md={2}>
+		</Col>
+		<Col md={3}>
+		<span id="x"> Job Provider:</span>
+		</Col>
+		<Col md={2} id="x">
+		{this.state.user}
+		</Col>
+		<Col md={2}>
+		<span id="x">PhoneNumber:</span>
+		</Col>
+		<Col md={1} id="x">
+		{this.state.phoneNumber}
+		</Col>
+		</Row><br />
 			
+		
 			<div>
 				<button>show interest</button>
 			 </div>
@@ -107,6 +158,7 @@ render() {
 			 <div>
 				<button>Assign the job</button>
 			 </div>
+			 
 		 </div>
 
 	)
