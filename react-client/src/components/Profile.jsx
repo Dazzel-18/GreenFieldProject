@@ -3,6 +3,7 @@ import axios from 'axios';
 import JobsForUser from './JobsForUser.jsx';
 import UserInfo from './UserInfo.jsx';
 import {FormControl, Row, Col} from 'react-bootstrap';
+import StarRatingComponent from 'react-star-rating-component';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,8 @@ class Profile extends React.Component {
     this.state = { 
       jobs: [],
       user:[],
-      myJobs:[]
+      myJobs:[],
+      rating: 0
     }
   }
 
@@ -34,7 +36,13 @@ class Profile extends React.Component {
   }).catch(function (error) {
     console.log(error);
   });
+  
 }
+
+  onStarClick(nextValue, prevValue, name) {
+    console.log(nextValue,prevValue)
+    this.setState({rating: nextValue});
+  }
 
 
 render() {
@@ -56,7 +64,17 @@ render() {
         <h2>Name:{this.state.user.name}</h2> 
         <h2>email:{this.state.user.email}</h2>
         <h2>phoneNumber:{this.state.user.phoneNumber}</h2>
+        <div>
+          <h2>Rating: {this.state.rating}</h2>
+          <StarRatingComponent 
+            name="rate1" 
+            starCount={10}
+            value={this.state.rating}
+            onStarClick={this.onStarClick.bind(this)}
+          />
+      </div>
     </div>
+         
 
     <div className="col-md-9">
 

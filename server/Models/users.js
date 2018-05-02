@@ -28,9 +28,9 @@ var usersSchema = mongoose.Schema({
       },
   nationality: String,
 
-  rate:{
-    type:Number,
-    default:0
+  rating:{
+    type:Number
+    
   },
   image:{
     type:String
