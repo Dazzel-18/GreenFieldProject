@@ -10,6 +10,7 @@ class JobsForm extends React.Component {
 			jobTitle: '',
 			jobDescription: '',
 			category: '',
+			salary:'',
 			from: '',
 			to: ''},
 			message:'',
@@ -52,6 +53,7 @@ class JobsForm extends React.Component {
 			<div id="jobform" className="container wrapper well"><br />
 			<form onSubmit={this.handleSubmit}>
 			<Row>
+			<Row>
 			<Col md={1}>
 			</Col>
 			<Col md={2}>
@@ -61,6 +63,10 @@ class JobsForm extends React.Component {
 			<label >
 			<FormControl maxLength={20} type="text" name="jobTitle" placeholder = "Job Title" autoFocus required onChange={this.onChange} />
 			</label></Col>
+			</Row>
+			<br />
+			<Col md={1}>
+			</Col>
 			<Col md={2}>
 			<span>Category</span>
 			</Col>
@@ -78,8 +84,16 @@ class JobsForm extends React.Component {
         </div>
 			</label>
 			</Col>
-			<Col md={1}>
+
+			<Col md={2}>
+			<span>Salary</span>
 			</Col>
+			<Col md={3}>
+			<label >
+			<FormControl maxLength={10} type="text" name="salary" placeholder = "salary" autoFocus required onChange={this.onChange} />
+			</label></Col>
+
+			
 			</Row> <br />
 
 			<Row>
@@ -139,12 +153,13 @@ class JobsForm extends React.Component {
 			<Col md={1}>
 			</Col>
 
-			</Row><br /><br />
+			</Row><br />
 			    <Button id="jobb" className="btn btn-primary" type="submit" bsSize="large" >
 				     Add
 			    </Button>
+			    
 			    <h3 className="SuccessMessage">{this.state.message}</h3>
-
+			    
 			</form>
 			</div>
 			</center>
