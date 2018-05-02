@@ -7,16 +7,19 @@ class JobPage extends React.Component {
  	super(props);
 
 	this.state={
+		// job info
 		jobTitle:'',
-		user:'',
 		category:'',
+		jobDescription:'',
+
 		from:'',
 		to:'',
-		phoneNumber:'',
-		jobDescription:'',
-		phoneNumber:0,
 		dateFrom: '',
 		dateTo: '',
+
+		// userinfo
+		user:'',
+		phoneNumber:0,
   }
 
 }
@@ -24,21 +27,20 @@ class JobPage extends React.Component {
 componentDidMount(){
 	 axios.get(`/jobinfo/${this.props.match.params.jobid}`)
     .then(response => {
-    const jobInfo = response.data;
-    console.log(jobInfo);
+    const jobInfo = response.data[0];
+    //console.log(jobInfo);
     this.setState({
     	jobTitle:jobInfo.jobTitle,
-    	user:jobInfo.user,
-		category:jobInfo.category,
+    	category:jobInfo.category,
 		from:jobInfo.from,
 		to:jobInfo.to,
 		jobDescription:jobInfo.jobDescription,
 		dateFrom:jobInfo.dateFrom,
-		dateTo:jobInfo.dateTo
-		//phoneNumber:jobInfo.phoneNumber
- 
-    })
+		dateTo:jobInfo.dateTo,
+		user:jobInfo.userInfo.name,
+		phoneNumber:jobInfo.userInfo.phoneNumber,
 
+    })
     
   })
   .catch(function (error) {
@@ -46,15 +48,11 @@ componentDidMount(){
   });
 
 }
-
-// user data still need to be added 
-
-// need to style 
- 
  
 render() {
 	return (
 		<div id="details" className="container wrapper well">
+		Job Info
 			<div> jobTitle :
 			{this.state.jobTitle}
 			</div>
@@ -84,6 +82,20 @@ render() {
 		<div> To :
 			{this.state.dateTo}
 		</div>
+		<hr/>
+
+		<div>
+		Job provider Info
+			<div> Job Provider :
+				{this.state.user}
+			</div>
+
+			<div> PhoneNumber:
+				{this.state.phoneNumber}
+			</div>
+		</div>
+
+
 		</div>	
 
 			
