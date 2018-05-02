@@ -280,7 +280,66 @@ app.delete('/:jobTitle', function(req, res){
 	});
 });
 
-//a function to return 
+
+// get user in the session
+app.get('/job/interest',function(req,res){
+	res.status(200);
+	res.send(req.session.userName);
+
+})
+
+
+app.get('/interest/:jobid',function(req,res){
+	var jobId=req.params.jobid;
+	// console.log(jobId);
+	Jobs.getInterestUsers(jobId,function(err,data){
+		if(err) {
+			res.status(500);
+			res.send(err);
+		}
+		else{
+			console.log(data);
+			res.status(200);
+			res.send(data);
+		}
+	})
+
+})
+
+app.get('/job/interest/:jobid',function(req,res){
+	
+	var id=req.params.jobid;
+
+	var loggedUser=req.session.userName;
+
+	Jobs.createJobInterest(id,loggedUser,function(err,user){
+		if(err){
+			console.log("err");
+		}
+		console.log("success");
+
+
+	})
+})
+
+app.get('/jobinfo/:jobid', function(req, res){
+	var jobid=req.params.jobid;
+
+	console.log(jobid)
+
+	//console.log(jobid)
+	Jobs.getJobById(jobid,function(err, job){
+
+	
+		if(err){
+			console.log(err);
+		} else {
+			//console.log(job[0].userInfo);
+			res.send(job);
+		}
+	});	
+});
+
 
 app.set('port', (process.env.PORT || 3000));
 

@@ -8,6 +8,7 @@ class JobPage extends React.Component {
 
 	this.state={
 		// job info
+		jobId:'',
 		jobTitle:'',
 		category:'',
 		jobDescription:'',
@@ -20,11 +21,18 @@ class JobPage extends React.Component {
 		// userinfo
 		user:'',
 		phoneNumber:0,
+		loggedUser:'',
+		intestUsers:[]
+
   }
+
+  this.handleInterests=this.handleInterests.bind(this);
+  this.insertInterests=this.insertInterests.bind(this);
 
 }
 
 componentDidMount(){
+
 	 axios.get(`/jobinfo/${this.props.match.params.jobid}`)
     .then(response => {
     const jobInfo = response.data[0];
@@ -37,10 +45,14 @@ componentDidMount(){
 		jobDescription:jobInfo.jobDescription,
 		dateFrom:jobInfo.dateFrom,
 		dateTo:jobInfo.dateTo,
-		user:jobInfo.userInfo.name,
-		phoneNumber:jobInfo.userInfo.phoneNumber,
-
+		user:jobInfo.userInfo[0].userName,
+		phoneNumber:jobInfo.userInfo[0].phoneNumber,
+		jobId:this.props.match.params.jobid
+ 
     })
+        this.handleInterests();
+        this.loadInterestusres();
+
     
   })
   .catch(function (error) {
@@ -48,7 +60,63 @@ componentDidMount(){
   });
 
 }
- 
+
+loadInterestusres(){
+	//console.log(this.state.jobId);
+	 axios.get(`/interest/${this.state.jobId}`)
+    .then(response => {
+    //const jobInfo = response.data[0];
+    //console.log(response.data);
+
+    this.setState({intestUsers:response.data})
+    console.log(this.state.intestUsers);
+    })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+
+
+handleInterests(){
+	//console.log(this.state.jobId);
+	 axios.get('/job/interest')
+    .then(response => {
+    const loggedUser = response.data;
+    //console.log(loggedUser===this.state.user);
+
+    this.setState({
+    	loggedUser:loggedUser
+    })
+  
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+}
+
+
+insertInterests(){
+
+	//console.log(this.state.jobId);
+	axios.get(`/job/interest/${this.state.jobId}`)
+
+	.then(response => {
+	    //const loggedUser = response.data;
+	    //console.log(loggedUser===this.state.user);
+
+	    console.log("success");
+	  
+	  })
+	  .catch(function (error) {
+	    console.log(error);
+	  });
+
+
+}
+
 render() {
 	return (
 		<div id="details" className="container wrapper well">
@@ -152,12 +220,26 @@ render() {
 			<br />
 			</div>
 			<br />
+
 			<div>
-				<button  id="but">show interest</button>
-				<button  id="but">Assign the job</button>
-			</div>
+			Interested Users:
+			<select>
+			{this.state.intestUsers.map(function(user,index){ return(
+				<option key={index} value="any thing">{user.username}</option>
+			)
+			})
+			}
+			</select>
+
+			</div>		
+			{this.state.loggedUser!==this.state.user?<div>
+				<button id="but" onClick={this.insertInterests}>show interest</button></div>:
+				 <div><button id="but" >Assign the job</button>
+			 </div>}
 
 		</div>
+
+		
 
 	)
   }

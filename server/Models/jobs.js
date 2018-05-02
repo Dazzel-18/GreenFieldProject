@@ -45,6 +45,21 @@ var jobsSchema = mongoose.Schema({
 
 });
 
+
+var InterestSchema= mongoose.Schema({
+  username: {
+    type:String,
+    index: {unique: true }
+  },
+  jobId: {
+    type:String,
+  }
+})
+
+var Interests= mongoose.model("Interests", InterestSchema)
+
+
+
 var commentsSchema= mongoose.Schema({
   username: String,
   text: String,
@@ -101,17 +116,36 @@ var jobByTitle = function (jobTitle, callback){
 };
 
 
-
-
 var getJobById = function (jobId, callback){
-  Jobs.findOne({_id: jobId}, function(err, data){
-    if(err){
-      callback(err, null)
-    } else {
-    callback(null, data)
-  }
-  });
-};
+
+Jobs.aggregate([
+
+   { $match: {'_id':mongoose.Types.ObjectId(jobId)} },
+  
+   {
+     $lookup:
+       {
+         from: "users",
+         localField: "user",
+         foreignField: "userName",
+         as: "userInfo"
+       }
+   }
+
+], function (err, data) {
+        if (err) {
+          console.log(err);
+            callback(err, null);
+        }
+       // console.log("get data",data);
+        callback(null, data)
+    });
+}
+
+
+
+
+
 
 var getUserJob = function (jobTitle,user, callback){
   Jobs.findOne({"jobTitle": jobTitle,"user":user}, function(err, data){
@@ -305,6 +339,38 @@ var findComment = function (id, callback){
   });
 };
 
+
+
+var createJobInterest=function(jobId,loggedUser,callback){
+  var interest=new Interests({
+    username:loggedUser,
+    jobId: jobId
+  })
+
+  interest.save(function(err){
+    if(err){
+      callback(err)
+    }
+  callback(null,interest)
+
+  })
+ }
+
+
+
+ var getInterestUsers=function(jobId,callback){
+  Interests.find({jobId:jobId},function(err,data){
+
+    if(err)
+      callback(err,null);
+    else{
+
+     callback(null,data);
+    }
+  })
+
+ }
+
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
 module.exports.Comments = Comments;
@@ -323,4 +389,6 @@ module.exports.updateUserJob = updateUserJob;
 module.exports.getJobById=getJobById;
 module.exports.createComment = createComment;
 module.exports.findComment = findComment;
+module.exports.createJobInterest=createJobInterest;
+module.exports.getInterestUsers=getInterestUsers;
 
