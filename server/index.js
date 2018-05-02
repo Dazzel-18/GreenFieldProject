@@ -134,11 +134,21 @@ app.post('/userJob', function(req, res){
 });
 //it add a new comment for this User
 app.post('/comment', function(req, res){
-	console.log('cccoommment',req.body.states.user)
-	Jobs.createComment(req.body.states,function(err,comment){
+	Jobs.createComment(req.body.states,{"userName":req.session.userName},function(err,comment){
     if(err){
       res.send(err)
     }
+  res.json(comment)
+	})
+});
+
+app.get('/comment/:id', function(req, res){
+	console.log('uidddd',req.params.id)
+	Jobs.findComment({"id": req.params.id},function(err,comment){
+    if(err){
+      res.send(err)
+    }
+   // console.log('cccoommment',comment)
   res.json(comment)
 	})
 });
