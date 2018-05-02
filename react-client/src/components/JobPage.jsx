@@ -14,8 +14,9 @@ class JobPage extends React.Component {
 		to:'',
 		phoneNumber:'',
 		jobDescription:'',
-		phoneNumber:0
- 	
+		phoneNumber:0,
+		dateFrom: '',
+		dateTo: '',
   }
 
 }
@@ -32,6 +33,8 @@ componentDidMount(){
 		from:jobInfo.from,
 		to:jobInfo.to,
 		jobDescription:jobInfo.jobDescription,
+		dateFrom:jobInfo.dateFrom,
+		dateTo:jobInfo.dateTo
 		//phoneNumber:jobInfo.phoneNumber
  
     })
@@ -51,7 +54,7 @@ componentDidMount(){
  
 render() {
 	return (
-		<div>
+		<div id="details" className="container wrapper well">
 			<div> jobTitle :
 			{this.state.jobTitle}
 			</div>
@@ -63,6 +66,7 @@ render() {
 			{this.state.jobDescription}
 			</div>
 
+			<div> Time :
 			<div> From :
 			{this.state.from}
 			</div>
@@ -70,6 +74,17 @@ render() {
 			<div> To :
 			{this.state.to}
 			</div>
+			</div>
+
+			<div> Date :
+			<div> From :
+			{this.state.dateFrom}
+			</div>
+		
+		<div> To :
+			{this.state.dateTo}
+		</div>
+		</div>	
 
 			
 			<div>
