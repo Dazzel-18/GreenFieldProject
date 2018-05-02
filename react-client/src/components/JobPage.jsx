@@ -205,22 +205,16 @@ render() {
 			<br />
 			</div>
 			<br />
-			<div>
-<<<<<<< 78afa13001c0b37da12eb302da5e8bb4b7b6a83b
-				<button  id="but">show interest</button>
-				<button  id="but">Assign the job</button>
-			</div>
+			
 
 		</div>
-=======
+
 			{this.state.loggedUser!==this.state.user?<div>
-				<button onClick={this.insertInterests}>show interest</button></div>:
-				 <div><button onClick={}>Assign the job</button>
+				<button id="but" onClick={this.insertInterests}>show interest</button></div>:
+				 <div><button id="but" >Assign the job</button>
 			 </div>
 
-			</div>
-		 </div>
->>>>>>> save interested users of each job in db
+		
 
 	)
   }
