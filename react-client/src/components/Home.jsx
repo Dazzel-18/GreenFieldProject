@@ -75,7 +75,6 @@ render() {
     <div>
     {this.state.items.map(function(item ,index){
       return (
-
         <JobList key={index} item={item}/>
         )
     })}

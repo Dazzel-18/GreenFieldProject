@@ -39,6 +39,10 @@ render() {
       <span><b>To : </b></span>
       <span>{this.props.item.to}</span>
       </Col> 
+      <Col md={4}>
+      <span><b>Salary : </b></span>
+      <span>{this.props.item.salary}</span>
+      </Col>
     </Row><br />
 
     <Row id="userjob">

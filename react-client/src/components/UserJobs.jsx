@@ -8,6 +8,7 @@ class UserJobs extends React.Component {
       user: '',
       jobTitle: '',
       jobDescription: '',
+      salary: '',
       category: '',
       from: '',
       to: ''},
@@ -26,7 +27,7 @@ class UserJobs extends React.Component {
     };
    componentDidMount() {
     var that =this
-   	  axios.post('/userJob',{jobTitle:that.props.match.params.jobTitle,
+      axios.post('/userJob',{jobTitle:that.props.match.params.jobTitle,
         user:that.props.match.params.userName})
     .then(response => {
     const posts = response.data;
@@ -60,6 +61,7 @@ render() {
       <div id="jobform" className="container wrapper well"><br /><br /><br />
       <form onSubmit={this.handleSubmit}>
       <Row>
+      <Row>
       <Col md={1}>
       </Col>
       <Col md={2}>
@@ -70,6 +72,10 @@ render() {
       <FormControl type = "text" name = "jobTitle" placeholder = "Job Title" autoFocus
        required onChange={this.onChange}  value={this.state.states.jobTitle} />
       </label></Col>
+      </Row>
+      <br />
+      <Col md={1}>
+      </Col>
       <Col md={2}>
       <span>Category</span>
       </Col>
@@ -89,8 +95,16 @@ render() {
         </div>
       </label>
      </Col>
-      <Col md={1}>
+
+      <Col md={2}>
+      <span>Salary</span>
       </Col>
+      <Col md={3}>
+       <label >
+      <FormControl type = "text" name = "salary" placeholder = "Salary" autoFocus
+       required onChange={this.onChange}  value={this.state.states.salary} />
+      </label></Col>
+
       </Row> <br />
 
       <Row>

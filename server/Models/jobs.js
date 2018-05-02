@@ -16,6 +16,10 @@ var jobsSchema = mongoose.Schema({
     type: String,
     require:true
   },
+  salary: {
+    type: String,
+    require:true
+  },
   from: String,
   to: String,
   dateTo:Date,
@@ -28,15 +32,15 @@ var jobsSchema = mongoose.Schema({
   dateFrom: String,
   dateTo: String,
   comments:{
-  	type:[{username:String,comment:String}],
+    type:[{username:String,comment:String}],
    },
 
    interestedUsers:{
-   	type:[String]
+    type:[String]
    },
 
    takenBy:{
-   	type:String
+    type:String
 
    }
 
@@ -57,7 +61,7 @@ var createJob = function(userName,data, callback){
 var allJobs = function (callback){
    Jobs.aggregate([
 
-   	{$sort:
+    {$sort:
        {created_at:-1}
     },
    {
