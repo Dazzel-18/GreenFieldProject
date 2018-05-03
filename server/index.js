@@ -215,9 +215,11 @@ app.post("/signup",function(req, res){
 });
 
 app.post('/rating',function(req,res){
-	console.log(req.body.userName)
+	//console.log(req.body.userName)
+
+	if(req.session.userName!==req.body.username){
 	Users.findRate(req.body,function(err,result){
-		console.log('aaaa',result)
+		//console.log('aaaa',result)
 		if (!err && result) {
 			console.log('aaaa',result.rating.numberOfRater)
 			console.log('aaaassa',result.rating.Total)
@@ -232,7 +234,17 @@ app.post('/rating',function(req,res){
        	   }
 
 	})
+
+}
 })
+
+
+
+// app.get('/getrate/:user',function(req,res){
+// 	console.log(req.params.user);
+
+// })
+
 // destroys sessions when logout
 app.get('/logout', function (req, res) {
 	req.session.destroy();
