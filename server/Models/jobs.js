@@ -322,13 +322,10 @@ var findComment = function (id, callback){
     } else {
       var arr=[];
       for(var i=0;i<data.length;i++){
-        console.log(data[i].idJob)
-        
         if(id.id===data[i].idJob){
           arr.push(data[i])
         }
       }
-      console.log(arr)
     callback(null, arr)
   }
   });
@@ -366,7 +363,21 @@ var createJobInterest=function(jobId,loggedUser,callback){
 
  }
 
-
+var findTaken = function (user, callback){
+  Jobs.find(function(err, data){
+    if(err){
+      callback(err, null)
+    } else {
+      var arr=[];
+      for(var i=0;i<data.length;i++){
+        if(user===data[i].takenBy && data[i]!=='Vacant'){
+          arr.push(data[i])
+        }
+      } 
+    callback(null, arr)
+  }
+  });
+}
  var assignJob=function(jobId,user,callback){
 
 
@@ -408,4 +419,6 @@ module.exports.findComment = findComment;
 module.exports.createJobInterest=createJobInterest;
 module.exports.getInterestUsers=getInterestUsers;
 module.exports.assignJob=assignJob;
+module.exports.findTaken=findTaken;
+
 
