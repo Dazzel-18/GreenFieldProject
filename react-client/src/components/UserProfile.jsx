@@ -1,7 +1,8 @@
 import React from 'react';
-import {FormControl} from "react-bootstrap";
+import {FormControl, Row, Col,Button} from 'react-bootstrap';
 import axios from 'axios';
 import JobList from './JobList.jsx';
+import StarRatingComponent from 'react-star-rating-component';
 
 
 class UserProfile extends React.Component {
@@ -13,11 +14,15 @@ constructor(props) {
       value: '',
       user:[],
       userJobs:[],
-      test:false
+      test:false,
+      rating: 0,
+      userRate:0,
+      userTotal:0
     };
 
     this.SearchUser  = this.SearchUser.bind(this);
     this.SearchButton = this.SearchButton.bind(this);
+    this.sendRate=this.sendRate.bind(this);
     
   }
   SearchUser(e) {
@@ -35,6 +40,8 @@ constructor(props) {
         .then(function(response){
           const posts = response.data;
             that.setState({user: posts});
+            that.setState({userRate:posts.rating.rate,userTotal:posts.rating.total})
+
         })
           .catch(function (error) {
             console.log(error);
@@ -48,6 +55,20 @@ constructor(props) {
           .catch(function (error) {
             console.log(error);
         });
+  }
+  sendRate(){
+
+    var that=this;
+    axios.post('/rating' ,{rating:that.state.rating ,userName:this.state.value })
+  .then(response=>{
+    //console.log(rating)
+  }).catch(function (error){
+    console.log(error);
+  });
+  
+  }
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
   }
  
   render() {
@@ -93,11 +114,26 @@ constructor(props) {
      <div className="row " >
      <div className="col-md-3 "  >
         <img  src={this.state.user.image}/>
-        <h2>Name:{this.state.user.name}</h2> 
-        <h2>email:{this.state.user.email}</h2>
-        <h2>phoneNumber:{this.state.user.phoneNumber}</h2>
-    </div>
+        <h2 id="h2">Name:</h2>
+        <p id="p2"> {this.state.user.name}</p>
+        <h2 id="h2">email:</h2>
+        <p id="p2"> {this.state.user.email}</p>
+        <h2 id="h2">phoneNumber:</h2> 
+        <p id="p2">{this.state.user.phoneNumber}</p>
+        <div>
+          <h2>Rating: {Math.round(this.state.userRate/this.state.userTotal)}</h2>
 
+          <h2 id="h2">Rating: {this.state.rating}</h2>
+
+          <StarRatingComponent 
+            name="rate1" 
+            starCount={10}
+            value={this.state.rating}
+            onStarClick={this.onStarClick.bind(this)}
+          /><Button  onClick ={this.sendRate} type="submit" bsStyle="primary" bsSize="small">AddRate</Button> 
+         
+      </div>
+    </div>
     <div className="col-md-9">
 
     <div>
