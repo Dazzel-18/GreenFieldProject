@@ -150,27 +150,27 @@ render() {
 			<br />
 			<br />
 			<Row>
-			<Col md={2}>
+			<Col md={1}>
 			</Col>
-			<Col md={3}>
-			<span id="x"> jobTitle : </span>
+			<Col md={2}>
+			<span id="span4"> jobTitle : </span>
 			</Col>
 			<Col md={2} id="x">
 			{this.state.jobTitle}
 			</Col>
-			<Col md={3}>
-			<span id="x"> jobCategory : </span>
+			<Col md={4}>
+			<span id="span4"> jobCategory : </span>
 			</Col>
-			<Col md={3} id="x">
+			<Col md={2} id="x">
 			{this.state.category}
 			</Col>
 			</Row><br />
 			
 			<Row>
-			<Col md={2}>
+			<Col md={1}>
 			</Col>
-			<Col md={3}>
-			<span id="x"> JobDescription: </span>
+			<Col md={2}>
+			<span id="span4"> JobDescription: </span>
 			</Col>
 			<Col md={2} id="x">
 			{this.state.jobDescription}
@@ -178,44 +178,44 @@ render() {
 			</Row><br />
 
 			<Row>
-			<Col md={2}>
+			<Col md={1}>
 			</Col>
-			<Col md={3} id="y">
+			<Col md={2} id="span3">
 			Time:
 			</Col>
-			<Col md={2}>
-			<span id="y">From : </span>
+			<Col md={1}>
+			<span id="span3">From : </span>
 			</Col>
 			<Col md={1} id="y">
 			{this.state.from}
 			</Col>
 			<Col md={1}>
-			<span id="y"> To : </span>
+			<span id="span3"> To : </span>
 			</Col>
 			<Col md={1} id="y">
 			{this.state.to}
 			</Col>
 
-			<Col md={1} id="y">
+			<Col md={1} id="span3">
 				Salary:{this.state.salary}
 			</Col>
 
 			</Row><br />
 
 			<Row>
-			<Col md={2}>
+			<Col md={1}>
 			</Col>
-			<Col md={3} id="y">
+			<Col md={2} id="span3">
 			Date:
 			</Col>
-			<Col md={2}>
-			<span id="y"> From : </span>
+			<Col md={1}>
+			<span id="span3"> From : </span>
 			</Col>
 			<Col md={1} id="y">
 			{this.state.dateFrom}
 			</Col>
 			<Col md={1}>
-			<span id="y"> To : </span>
+			<span id="span3"> To : </span>
 			</Col>
 			<Col md={2} id="y">
 			{this.state.dateTo}
@@ -234,13 +234,13 @@ render() {
 			<Col md={2}>
 			</Col>
 			<Col md={3}>
-			<span id="x"> Job Provider:</span>
+			<span id="span4"> Job Provider:</span>
 			</Col>
 			<Col md={2} id="x">
 			{this.state.user}
 			</Col>
 			<Col md={2}>
-			<span id="x">PhoneNumber:</span>
+			<span id="span4">PhoneNumber:</span>
 			</Col>
 			<Col md={1} id="x">
 			{this.state.phoneNumber}
@@ -250,7 +250,7 @@ render() {
 			</div>
 			<br />
 
-			<div>
+			<div id="div2">
 			Interested Users:
 			<select onChange={this.handleChange}>
 			<option value='select user'>select user</option>

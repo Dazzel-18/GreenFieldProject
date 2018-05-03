@@ -60,7 +60,7 @@ class JobsForm extends React.Component {
 			<span>Job Title</span>
 			</Col>
 			<Col md={3}>
-			<label >
+			<label>
 			<FormControl maxLength={20} type="text" name="jobTitle" placeholder = "Job Title" autoFocus required onChange={this.onChange} />
 			</label></Col>
 			</Row>

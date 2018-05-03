@@ -98,11 +98,17 @@ render() {
     <div className="row " >
      <div className="col-md-3 "  >
         <img  src={this.state.user.image}/>
-        <h2>Name:{this.state.user.name}</h2> 
-        <h2>email:{this.state.user.email}</h2>
-        <h2>phoneNumber:{this.state.user.phoneNumber}</h2>
+        <h2 id="h2">Name:</h2>
+        <p> {this.state.user.name}</p>
+        <h2 id="h2">email:</h2>
+        <p> {this.state.user.email}</p>
+        <h2 id="h2">phoneNumber:</h2> 
+        <p>{this.state.user.phoneNumber}</p>
         <div>
           <h2>Rating: {Math.round(this.state.userRate/this.state.userTotal)}</h2>
+
+          <h2 id="h2">Rating: {this.state.rating}</h2>
+
           <StarRatingComponent 
             name="rate1" 
             starCount={10}

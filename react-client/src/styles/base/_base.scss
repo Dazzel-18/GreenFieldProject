@@ -287,16 +287,28 @@ li a:hover:not(.is-active) {
 
 h1 {
     color: black;
-    text-shadow: 3px 2px rgb(193, 233, 16);
+    text-shadow: 3px 2px lightblue;
     font-family:verdana;
+}
+
+#span4 {
+    font-size: 22px;
+    color:black;
+    text-decoration: underline;
 }
 
 #x {
     font-size: 22px;
 }
 
+#span3 {
+    font-size:17px;
+    color:black;
+    text-decoration: underline;
+}
+
 #y {
-    font-size:15px;
+    font-size:17px;
 }
 
 #divv {
@@ -319,8 +331,19 @@ h1 {
 #span1 {
     float: left;
     font-weight: bolder;
+    color:blue;
 }
 
 #span2 {
     float: left;
+}
+
+#h2 {
+    font-size:15;
+    color:black;
+    text-decoration: underline;
+}
+
+#div2 {
+    font-size:20px;
 }
