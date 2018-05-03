@@ -14,7 +14,7 @@ class Profile extends React.Component {
       myJobs:[],
       rating: 0,
       userRate:0,
-      userTotal:0
+      userTotal:0,
       takenBy:[]
     }
     this.sendRate=this.sendRate.bind(this);
