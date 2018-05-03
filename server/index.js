@@ -363,6 +363,26 @@ app.get('/jobinfo/:jobid', function(req, res){
 });
 
 
+app.post('/assignjob',function(req,res){
+	var jobId=req.body.jobId;
+	var user=req.body.user;
+
+	//console.log(jobId,user)
+
+	Jobs.assignJob(jobId,user,function(err,data){
+		if(err){
+			res.status(500);
+			res.send(err);
+		}
+
+		else{
+			
+		}
+	})
+
+})
+
+
 app.set('port', (process.env.PORT || 3000));
 
 app.listen(app.get('port'), function() {

@@ -32,14 +32,9 @@ var jobsSchema = mongoose.Schema({
   dateFrom: String,
   dateTo: String,
 
-
-
-   interestedUsers:{
-    type:[String]
-   },
-
    takenBy:{
-    type:String
+    type:String,
+    default:"Vacant"
 
    }
 
@@ -371,6 +366,27 @@ var createJobInterest=function(jobId,loggedUser,callback){
 
  }
 
+
+ var assignJob=function(jobId,user,callback){
+
+
+Jobs.findById({_id:jobId},function(err,data){
+  if(err)
+    callback(err,null);
+
+  else{
+    if (data.takenBy==='Vacant'){
+        data.takenBy=user;
+        data.save(function(err){
+        if (err)   console.log("error in saving takenBy")
+       })
+      }
+    callback(null,data);
+  }
+})
+
+ }
+
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
 module.exports.Comments = Comments;
@@ -391,4 +407,5 @@ module.exports.createComment = createComment;
 module.exports.findComment = findComment;
 module.exports.createJobInterest=createJobInterest;
 module.exports.getInterestUsers=getInterestUsers;
+module.exports.assignJob=assignJob;
 

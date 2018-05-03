@@ -17,17 +17,21 @@ class JobPage extends React.Component {
 		to:'',
 		dateFrom: '',
 		dateTo: '',
+		salary:0,
 
 		// userinfo
 		user:'',
 		phoneNumber:0,
 		loggedUser:'',
-		intestUsers:[]
+		intestUsers:[],
+		selectedUser:''
 
   }
 
   this.handleInterests=this.handleInterests.bind(this);
   this.insertInterests=this.insertInterests.bind(this);
+  this.handleChange=this.handleChange.bind(this);
+  this.assignUser=this.assignUser.bind(this);
 
 }
 
@@ -36,10 +40,11 @@ componentDidMount(){
 	 axios.get(`/jobinfo/${this.props.match.params.jobid}`)
     .then(response => {
     const jobInfo = response.data[0];
-    //console.log(jobInfo);
+    console.log(jobInfo);
     this.setState({
     	jobTitle:jobInfo.jobTitle,
     	category:jobInfo.category,
+    	salary:jobInfo.salary,
 		from:jobInfo.from,
 		to:jobInfo.to,
 		jobDescription:jobInfo.jobDescription,
@@ -47,11 +52,13 @@ componentDidMount(){
 		dateTo:jobInfo.dateTo,
 		user:jobInfo.userInfo[0].userName,
 		phoneNumber:jobInfo.userInfo[0].phoneNumber,
-		jobId:this.props.match.params.jobid
+		jobId:this.props.match.params.jobid,
+		
  
     })
         this.handleInterests();
         this.loadInterestusres();
+        //this.handleChange();
 
     
   })
@@ -84,7 +91,7 @@ handleInterests(){
 	 axios.get('/job/interest')
     .then(response => {
     const loggedUser = response.data;
-    //console.log(loggedUser===this.state.user);
+    console.log(loggedUser===this.state.user);
 
     this.setState({
     	loggedUser:loggedUser
@@ -98,9 +105,26 @@ handleInterests(){
 }
 
 
-insertInterests(){
+handleChange(e){
+	this.setState({selectedUser:e.target.value});
 
-	//console.log(this.state.jobId);
+}
+
+
+assignUser(){
+	//console.log(this.state.selectedUser)
+
+	axios.post('/assignjob', { jobId:this.state.jobId,user:this.state.selectedUser})
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+	
+  .catch(function (error) {
+    console.log(error);
+  });
+}
+insertInterests(){
 	axios.get(`/job/interest/${this.state.jobId}`)
 
 	.then(response => {
@@ -171,6 +195,11 @@ render() {
 			<Col md={1} id="y">
 			{this.state.to}
 			</Col>
+
+			<Col md={1} id="y">
+				Salary:{this.state.salary}
+			</Col>
+
 			</Row><br />
 
 			<Row>
@@ -223,9 +252,10 @@ render() {
 
 			<div>
 			Interested Users:
-			<select>
+			<select onChange={this.handleChange}>
+			<option value='select user'>select user</option>
 			{this.state.intestUsers.map(function(user,index){ return(
-				<option key={index} value="any thing">{user.username}</option>
+				<option key={index} value={user.username}>{user.username}</option>
 			)
 			})
 			}
@@ -234,7 +264,7 @@ render() {
 			</div>		
 			{this.state.loggedUser!==this.state.user?<div>
 				<button id="but" onClick={this.insertInterests}>show interest</button></div>:
-				 <div><button id="but" >Assign the job</button>
+				 <div><button id="but" onClick={this.assignUser} >Assign the job</button>
 			 </div>}
 
 		</div>
