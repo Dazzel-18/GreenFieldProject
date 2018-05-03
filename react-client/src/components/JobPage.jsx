@@ -263,8 +263,8 @@ render() {
 
 			</div>		
 			{this.state.loggedUser!==this.state.user?<div>
-				<button id="but" onClick={this.insertInterests}>show interest</button></div>:
-				 <div><button id="but" onClick={this.assignUser} >Assign the job</button>
+				<button id="but" onClick={this.insertInterests}>I'm Interested</button></div>:
+				 <div><button id="but" onClick={this.assignUser} >Assign The User</button>
 			 </div>}
 
 		</div>

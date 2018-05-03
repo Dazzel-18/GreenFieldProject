@@ -134,23 +134,22 @@ app.post('/userJob', function(req, res){
 });
 //it add a new comment for this User
 app.post('/comment', function(req, res){
-	Jobs.createComment(req.body.states,{"userName":req.session.userName},function(err,comment){
+	var user = req.session.userName;
+	if(user===undefined){
+		user = 'none'
+	}
+	Jobs.createComment(req.body.states,{"userName":user},function(err,comment){
     if(err){
       res.send(err)
     }
   res.json(comment)
 	})
 });
-
-
-
 app.get('/comment/:id', function(req, res){
-	console.log('uidddd',req.params.id)
 	Jobs.findComment({"id": req.params.id},function(err,comment){
     if(err){
       res.send(err)
     }
-   // console.log('cccoommment',comment)
   res.json(comment)
 	})
 });
@@ -288,10 +287,6 @@ app.post('/someJobs', function (req, res) {
 		}
 	});
 });
-
-
-
-
 //it searches jobs by category
 app.post('/jobCategory', function (req, res) {
 	Jobs.jobsByCategory({"category":req.body.category}, function(err, job){
@@ -393,6 +388,18 @@ app.post('/assignjob',function(req,res){
 	})
 
 })
+
+app.get('/taken', function (req, res) {
+	console.log(req.body)
+	Jobs.findTaken(req.session.userName, function(err, jobs){
+		if(err){
+			console.log(err);
+		} else {
+			console.log('aaaa',jobs)
+			res.send(jobs);
+		}
+	});
+});
 
 
 app.set('port', (process.env.PORT || 3000));
