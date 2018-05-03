@@ -28,7 +28,16 @@ var usersSchema = mongoose.Schema({
       },
   nationality: String,
 
-  rating:Number,
+  rating:{
+    rate:{
+      type:Number,
+      default:0
+    },
+    total:{
+      type:Number,
+      default:0
+    }
+  },
   image:{
     type:String
   }
@@ -113,20 +122,42 @@ var getUserInfo= function(userName, callback){
   });
 };
 var findRate= function(data,callback){
-  var rateUSer = new Users({
-    rating:data.rating,
-  })
-  
-  rateUSer.save(function(err,data){
-    if(err){
-      callback(err)
-    }
+  var uName=data.userName;
+  var rating=data.rating;
+  Users.findOne({userName:uName},function(err,data){
+    if(err) console.log("error");
+
     else{
-      callback(null,data)
+      
+      data.rating.rate+=rating;
+      data.rating.total+=1;
+
+      data.save(function(err){
+        console.log("success");
+
+      })
     }
+
   })
 
 }
+
+
+  //console.log(data);
+  // var rateUSer = new Users({
+  //   rating:data.rating,
+  // })
+  
+  // rateUSer.save(function(err,data){
+  //   if(err){
+  //     callback(err)
+  //   }
+  //   else{
+  //     callback(null,data)
+  //   }
+  // })
+
+
 var updateUsers = function(userName, updatedData, callback){
   Users.findOneAndUpdate({userName: userName}, {$set: updatedData}, callback)
 };

@@ -7,15 +7,19 @@ import StarRatingComponent from 'react-star-rating-component';
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
+    //console.log(props)
     this.state = { 
       jobs: [],
       user:[],
       myJobs:[],
-      rating: 0
+      rating: 0,
+      userRate:0,
+      userTotal:0
     }
     this.sendRate=this.sendRate.bind(this);
-  }
+    //this.getRate=this.getRate.bind(this);
+
+    }
 //make new get requests for each filter
   componentDidMount() {
     var that =this;
@@ -30,17 +34,24 @@ class Profile extends React.Component {
   axios.get('/UserInfo')
     .then(response => {
     const posts = response.data;
+         
+
     that.setState({user:posts});
-   
+    that.setState({userRate:posts.rating.rate,userTotal:posts.rating.total})
+
   }).catch(function (error) {
     console.log(error);
   });
+
+  //this.getRate();
+
 }
+
   sendRate(){
     var that=this;
-    axios.post('/rating',{rating:that.state.rating ,userName:this.state.user.name})
+    axios.post('/rating',{rating:that.state.rating ,userName:this.state.user.userName})
   .then(response=>{
-    console.log(rating)
+    //console.log(rating)
   }).catch(function (error){
     console.log(error);
   });
@@ -50,6 +61,7 @@ class Profile extends React.Component {
     this.setState({rating: nextValue});
   }
 render() {
+  console.log(this.state.user)
   var arr = [];
   
 
@@ -69,13 +81,14 @@ render() {
         <h2>email:{this.state.user.email}</h2>
         <h2>phoneNumber:{this.state.user.phoneNumber}</h2>
         <div>
-          <h2>Rating: {this.state.rating}</h2>
+          <h2>Rating: {Math.round(this.state.userRate/this.state.userTotal)}</h2>
           <StarRatingComponent 
             name="rate1" 
             starCount={10}
             value={this.state.rating}
             onStarClick={this.onStarClick.bind(this)}
           /><Button  onClick ={this.sendRate} type="submit" bsStyle="primary" bsSize="small">AddRate</Button> 
+         
       </div>
     </div>
          
