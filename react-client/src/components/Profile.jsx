@@ -55,6 +55,15 @@ class Profile extends React.Component {
   }).catch(function (error) {
     console.log(error);
   });
+  axios.get('/taken')
+    .then(response => {
+    const posts = response.data;
+    that.setState({takenBy:posts});
+    console.log(that.state.takenBy)
+   
+  }).catch(function (error) {
+    console.log(error);
+  });
 }
 
   sendRate(){
