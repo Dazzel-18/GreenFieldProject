@@ -15,6 +15,7 @@ class Profile extends React.Component {
       rating: 0,
       userRate:0,
       userTotal:0
+      takenBy:[]
     }
     this.sendRate=this.sendRate.bind(this);
     //this.getRate=this.getRate.bind(this);
@@ -43,8 +44,17 @@ class Profile extends React.Component {
     console.log(error);
   });
 
-  //this.getRate();
 
+  //this.getRate();
+  axios.get('/taken')
+    .then(response => {
+    const posts = response.data;
+    that.setState({takenBy:posts});
+    console.log(that.state.takenBy)
+   
+  }).catch(function (error) {
+    console.log(error);
+  });
 }
 
   sendRate(){
@@ -63,12 +73,14 @@ class Profile extends React.Component {
 render() {
   console.log(this.state.user)
   var arr = [];
-  
+  var arrayForUser =[];
 
     this.state.jobs.forEach(function(item,index) {
       arr.push(<JobsForUser key={index} item={item} />)
     })
-  
+  this.state.takenBy.forEach(function(item,index) {
+      arrayForUser.push(<JobsForUser key={index} item={item} />)
+    })
   
   return (
   
@@ -91,31 +103,28 @@ render() {
          
       </div>
     </div>
-         
-
     <div className="col-md-9">
-
+    <h1>
+    My Jobs
+    </h1>
     <div>
     {arr}
-    </div>
-
-    </div>
-     </div>
+    </div>  
     <br />
     <br />
-
     <div>
     <h1>
-    Job For This User
+    Assign Jobs
     </h1>
     <br/>
     <br/>
     <div>
-    {arr}
+    {arrayForUser}
     </div>
     </div>
     </div>
-    
+    </div>
+    </div>    
     )
 }
 }
