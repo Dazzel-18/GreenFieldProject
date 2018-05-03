@@ -71,8 +71,6 @@ render() {
     <br />
     <div>
     <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
-    </div>
-    <div>
     {this.state.items.map(function(item ,index){
       return (
         <JobList key={index} item={item}/>

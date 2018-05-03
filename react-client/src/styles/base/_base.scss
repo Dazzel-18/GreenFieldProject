@@ -6,8 +6,6 @@ body {
     color: DARKBLUE;
     font-size: 1.6rem;
     background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
-   // background-repeat:no-repeat;
-     
 }
 
 ul {
@@ -164,7 +162,7 @@ li a:hover:not(.is-active) {
 }
 
 #b {
-    color: #c7c7c7
+    color: black;
 }
 
 .wrapper {
@@ -225,6 +223,7 @@ li a:hover:not(.is-active) {
     width: 900px;
     height: 560px;
     border-radius: 10px; 
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 #req {
@@ -232,7 +231,7 @@ li a:hover:not(.is-active) {
 }
 
 #signUpPage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -240,7 +239,7 @@ li a:hover:not(.is-active) {
 }
 
 #loginpage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -255,6 +254,7 @@ li a:hover:not(.is-active) {
   font-family: Mina;
   color: #141414;
   font-size: 18px;
+  background: url(https://previews.123rf.com/images/elosa/elosa1303/elosa130300011/18239686-a-light-blue-and-white-soft-texture-or-background.jpg);
 }
 
 #signup2 {
@@ -263,7 +263,7 @@ li a:hover:not(.is-active) {
 }
 
 #profile {
-  background: linear-gradient(to bottom, #e6dada, #274046);  
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 #profileUpdate {
@@ -274,6 +274,7 @@ li a:hover:not(.is-active) {
 
 #signlable {
   text-align: left;
+  color:black;
 }
 
 #description {
@@ -285,6 +286,7 @@ li a:hover:not(.is-active) {
     width: 1000px;
     height: 1000px0px;
     border-radius: 10px; 
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 h1 {
@@ -301,6 +303,7 @@ h1 {
 
 #x {
     font-size: 22px;
+    color:	rgb(61, 28, 138);
 }
 
 #span3 {
@@ -311,6 +314,7 @@ h1 {
 
 #y {
     font-size:17px;
+    color:	rgb(61, 28, 138);
 }
 
 #divv {
@@ -344,8 +348,21 @@ h1 {
     font-size:15;
     color:black;
     text-decoration: underline;
+    font-weight: bold;
 }
 
 #div2 {
     font-size:20px;
+}
+
+#nav {
+    color:#A9A9A9;
+}
+
+#textcolor {
+    color:black;
+}
+
+#p2 {
+    color:white;
 }

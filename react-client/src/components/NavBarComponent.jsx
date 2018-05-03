@@ -6,7 +6,7 @@ class NavBarComponent extends React.Component {
     	//console.log('ttteeessssttt')
     	if(this.props.session){
     		return(
-	<nav className="navbar navbar-fixed-top" >
+	<nav className="navbar navbar-fixed-top" id="nav">
   <div >
 		<ul id='HNA'>
 		<li id='Na'><NavLink to = "/" activeClassName = "is-active" exact = {true}>Home</NavLink></li>
@@ -24,7 +24,7 @@ class NavBarComponent extends React.Component {
     	}else{
     		return(
 	<nav className="navbar navbar-fixed-top" >
-  <div >
+  <div id="nav">
 		<ul id='HNA'>
 		<li id='Na'><NavLink to = "/" activeClassName = "is-active" exact = {true}>Home</NavLink></li>
 		<li className="nav navbar-nav pull-right" id='Na'><NavLink to = "/login" activeClassName = "is-active" >Login</NavLink></li>

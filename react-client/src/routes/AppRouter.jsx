@@ -40,8 +40,8 @@ axios.get('/logged')
 
     return (
 	<BrowserRouter>
-		<div>
-			<NavBarComponent session={this.state.session}/><br /><br />
+		<div id="navbar">
+			<NavBarComponent  session={this.state.session}/><br /><br />
 			<Switch>
 			<Route  exact path = "/"  component = {Home}/>	
 			<Route  path = "/signup" component = {SignUpForm} />

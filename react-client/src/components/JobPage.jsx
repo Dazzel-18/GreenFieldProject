@@ -161,13 +161,13 @@ render() {
 			<Col md={4}>
 			<span id="span4"> jobCategory : </span>
 			</Col>
-			<Col md={2} id="x">
+			<Col md={1} id="x">
 			{this.state.category}
 			</Col>
 			</Row><br />
 			
 			<Row>
-			<Col md={1}>
+			<Col md={4}>
 			</Col>
 			<Col md={2}>
 			<span id="span4"> JobDescription: </span>
