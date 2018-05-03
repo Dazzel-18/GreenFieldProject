@@ -67,6 +67,7 @@ class Profile extends React.Component {
 }
 
   sendRate(){
+
     var that=this;
     axios.post('/rating',{rating:that.state.rating ,userName:this.state.user.userName})
   .then(response=>{
