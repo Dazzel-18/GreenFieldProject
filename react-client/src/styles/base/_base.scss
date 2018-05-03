@@ -5,7 +5,7 @@ body {
     font-family: Rajdhani;
     color: DARKBLUE;
     font-size: 1.6rem;
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 ul {
@@ -138,7 +138,7 @@ li a:hover:not(.is-active) {
 }
 
 .jobsDiv {
-    background: url(https://slack-imgs.com/?c=1&url=https%3A%2F%2Fimage.freepik.com%2Ffree-vector%2Fpolygonal-space-background-with-connecting-dots-and-lines_8188-135.jpg);
+    background: url(https://previews.123rf.com/images/elosa/elosa1303/elosa130300011/18239686-a-light-blue-and-white-soft-texture-or-background.jpg);
     opacity: 0.8;
     border-radius: 10px; 
     width: 900;
@@ -162,7 +162,7 @@ li a:hover:not(.is-active) {
 }
 
 #b {
-    color: #c7c7c7
+    color: black;
 }
 
 .wrapper {
@@ -223,6 +223,7 @@ li a:hover:not(.is-active) {
     width: 900px;
     height: 560px;
     border-radius: 10px; 
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 #req {
@@ -230,7 +231,7 @@ li a:hover:not(.is-active) {
 }
 
 #signUpPage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -238,7 +239,7 @@ li a:hover:not(.is-active) {
 }
 
 #loginpage {
-    background: linear-gradient(to bottom, #e6dada, #274046);
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
     background-size: cover;
     height: 93vh;
     width: 100vw;
@@ -253,6 +254,7 @@ li a:hover:not(.is-active) {
   font-family: Mina;
   color: #141414;
   font-size: 18px;
+  background: url(https://previews.123rf.com/images/elosa/elosa1303/elosa130300011/18239686-a-light-blue-and-white-soft-texture-or-background.jpg);
 }
 
 #signup2 {
@@ -261,7 +263,7 @@ li a:hover:not(.is-active) {
 }
 
 #profile {
-  background: linear-gradient(to bottom, #e6dada, #274046);  
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 #profileUpdate {
@@ -272,6 +274,7 @@ li a:hover:not(.is-active) {
 
 #signlable {
   text-align: left;
+  color:black;
 }
 
 #description {
@@ -283,20 +286,35 @@ li a:hover:not(.is-active) {
     width: 1000px;
     height: 1000px0px;
     border-radius: 10px; 
+    background:linear-gradient(to right, rgb(43, 100, 146), rgb(206, 220, 224));
 }
 
 h1 {
     color: black;
-    text-shadow: 3px 2px rgb(193, 233, 16);
+    text-shadow: 3px 2px lightblue;
     font-family:verdana;
+}
+
+#span4 {
+    font-size: 22px;
+    color:black;
+    text-decoration: underline;
 }
 
 #x {
     font-size: 22px;
+    color:	rgb(61, 28, 138);
+}
+
+#span3 {
+    font-size:17px;
+    color:black;
+    text-decoration: underline;
 }
 
 #y {
-    font-size:15px;
+    font-size:17px;
+    color:	rgb(61, 28, 138);
 }
 
 #divv {
@@ -319,8 +337,32 @@ h1 {
 #span1 {
     float: left;
     font-weight: bolder;
+    color:blue;
 }
 
 #span2 {
     float: left;
+}
+
+#h2 {
+    font-size:15;
+    color:black;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#div2 {
+    font-size:20px;
+}
+
+#nav {
+    color:#A9A9A9;
+}
+
+#textcolor {
+    color:black;
+}
+
+#p2 {
+    color:white;
 }

@@ -118,7 +118,7 @@ render() {
 			<span>{this.props.item.jobTitle}</span>
 			</Col>
 			<Col md={4}>
-            <span><Link to={`/jobinfo/${ this.props.item._id}`} >Show Details :</Link></span>
+            <span><Link to={`/jobinfo/${ this.props.item._id}`} >Show Details</Link></span>
 			</Col>
 		</Row><br />		
        

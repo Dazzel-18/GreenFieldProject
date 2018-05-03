@@ -57,10 +57,10 @@ class JobsForm extends React.Component {
 			<Col md={1}>
 			</Col>
 			<Col md={2}>
-			<span>Job Title</span>
+			<span id="textcolor">Job Title</span>
 			</Col>
 			<Col md={3}>
-			<label >
+			<label>
 			<FormControl maxLength={20} type="text" name="jobTitle" placeholder = "Job Title" autoFocus required onChange={this.onChange} />
 			</label></Col>
 			</Row>
@@ -68,7 +68,7 @@ class JobsForm extends React.Component {
 			<Col md={1}>
 			</Col>
 			<Col md={2}>
-			<span>Category</span>
+			<span id="textcolor">Category</span>
 			</Col>
 			<Col md={3}>
 			<label >
@@ -86,7 +86,7 @@ class JobsForm extends React.Component {
 			</Col>
 
 			<Col md={2}>
-			<span>Salary</span>
+			<span id="textcolor">Salary</span>
 			</Col>
 			<Col md={3}>
 			<label >
@@ -100,7 +100,7 @@ class JobsForm extends React.Component {
 			<Col md={1}>
 			</Col> 
 			<Col md={2}>
-			<span>Job Description</span>
+			<span id="textcolor">Job Description</span>
 			</Col>
 			<Col md={8}>
 			<label >
@@ -112,18 +112,18 @@ class JobsForm extends React.Component {
 			</Row><br />
 
 			<Row>
-			<Col md={1}>
+			<Col md={1} id="textcolor">
 			Time :
 			</Col> 
 			<Col md={2}>
-			<span>From</span>
+			<span id="textcolor">From</span>
 			</Col>
 			<Col md={3}>
 			<label >
 			<FormControl type = "time" name = "from" placeholder = "From" autoFocus required onChange={this.onChange} />
 			</label> </Col>
 			<Col md={2}>
-			<span>To</span>
+			<span id="textcolor">To</span>
 			</Col>
 			<Col md={3}>
 			<label >
@@ -133,18 +133,18 @@ class JobsForm extends React.Component {
 			</Col>
 			</Row><br /><br />
 			<Row>
-			<Col md={1}>
+			<Col md={1} id="textcolor">
 			Date :
 			</Col>
 			<Col md={2}>
-			<span>From</span>
+			<span id="textcolor">From</span>
 			</Col>
 			<Col md={3}>
 			<label >
 			<FormControl type = "date" name = "dateFrom" placeholder = "Date" autoFocus required onChange={this.onChange} />
 			</label> </Col>
 			<Col md={2}>
-			<span>To</span>
+			<span id="textcolor">To</span>
 			</Col>
 			<Col md={3}>
 			<label >
