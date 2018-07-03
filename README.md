@@ -1,12 +1,7 @@
 # Project Name
 
->  Pocket Jobs
+>  Portable Jobs
 
-## Team
-
-  - __Product Owner__: Atheer Mahmood
-  - __Scrum Master__: Dareen Hanash
-  - __Development Team Members__: Hamza Alwan, Livia Nistor
 
 ## Table of Contents
 
@@ -17,6 +12,16 @@
     1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
+
+
+## Requirements
+
+
+## Installation
+
+
+## Features 
+
 
 ## Usage
   Clone or download the repo and run npm install, then open three terminal windows:
@@ -43,10 +48,11 @@ npm install
 bower install
 ```
 
-### Roadmap
+## Team
 
-View the project roadmap [here](https://waffle.io/RBKJuggernaut/GreenFieldProject)
-
+  - __Product Owner__: Nada Ghanem
+  - __Scrum Master__: Tal Alomary
+  - __Development Team Members__: Raed, Samer
 
 ## Contributing
 
