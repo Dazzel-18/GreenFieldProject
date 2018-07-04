@@ -1,6 +1,4 @@
-# Project Name
-
->  Pocket Jobs
+#  Pocket Jobs
 
 ## Team
 
