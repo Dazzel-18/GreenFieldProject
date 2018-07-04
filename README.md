@@ -7,13 +7,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Table of Contents
 
-1. [Getting Started](#Getting-Started)
-    1. [Prerequisites](#Prerequisites)
-    1. [Installation](#Installation)
-1. [Development](#Development)
-    1. [Installing Dependencies](#Installing-Dependencies)
-1. [File Hieghrarcy](#File-Hieghrarcy)
-1. [Authors](#Authors)
+1. [Getting Started](#getting-started)
+    1. [Prerequisites](#prerequisites)
+    1. [Installation](#installation)
+1. [Development](#development)
+    1. [Installing Dependencies](#installing-dependencies)
+1. [File Hieghrarcy](#file-hieghrarcy)
+1. [Authors](#authors)
 
 ### Prerequisites
 Make sure you installed the following :
