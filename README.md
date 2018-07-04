@@ -2,25 +2,25 @@
 A web application to add, list and search for
 part-time jobs.
 
-# Getting Started
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ## Table of Contents
 
-1. [Getting Started](#Getting Started)
+1. [Getting Started](#Getting-Started)
     1. [Prerequisites](#Prerequisites)
     1. [Installation](#Installation)
 1. [Development](#Development)
-    1. [Installing Dependencies](#Installing Dependencies)
-1. [File Hieghrarcy](#File Hieghrarcy)
+    1. [Installing Dependencies](#Installing-Dependencies)
+1. [File Hieghrarcy](#File-Hieghrarcy)
 1. [Authors](#Authors)
 
-## Prerequisites
+### Prerequisites
   Node ^6.11.4
   MongoDb
   React
 
-## Installation
+### Installation
 - Get a copy of the repo
 ```
 $ git clone https://github.com/Sarakoki/GreenFieldProject
@@ -31,18 +31,18 @@ $ npm install
 ``` 
 - open three terminal windows:
 ```
-1. npm run server-dev
+$ npm run server-dev
 ```
 ```
-2. npm run react-dev
+$ npm run react-dev
 ```
 ```
-3. sudo mongod
+$ sudo mongod
 ```
 
-## Development
+### Development
 
-### Installing Dependencies
+#### Installing Dependencies
 
 From within the root directory:
 
@@ -52,7 +52,7 @@ npm install
 bower install
 ```
 
-# File Hieghrarcy
+## File Hieghrarcy
     GreenFieldProject
     - server
       - Models
@@ -92,7 +92,7 @@ bower install
     - README.md
 
 
-# Authors
+## Authors
 - [Tal Omari](https://github.com/Talomari) - Scrum master.
 - [Nada Ghanem](https://github.com/nadaa) - Product Owner.
 - [Raed Awwad](https://github.com/raedawwad95) - Team member.
