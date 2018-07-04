@@ -13,6 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
 1. [File Hieghrarcy](#file-hieghrarcy)
+1. [Built With](#built-with)
 1. [Authors](#authors)
 
 ### Prerequisites
@@ -93,6 +94,10 @@ bower install
     - package.json
     - README.md
 
+## Built With
+- [ReactJS](https://reactjs.org/docs/hello-world.html) - Front-end framework
+- [Nodejs](https://nodejs.org/en/docs/) - the server
+- [MongoDB/mongoose](https://docs.mongodb.com/) - Database and ORM used
 
 ## Authors
 - [Tal Omari](https://github.com/Talomari) - Scrum master.
