@@ -1,33 +1,44 @@
 #  Pocket Jobs
+A web application to add, list and search for
+part-time jobs.
 
-## Team
-
-  - __Product Owner__: Atheer Mahmood
-  - __Scrum Master__: Dareen Hanash
-  - __Development Team Members__: Hamza Alwan, Livia Nistor
+# Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+1. [Getting Started](#Getting Started)
+    1. [Prerequisites](#Prerequisites)
+    1. [Installation](#Installation)
+1. [Development](#Development)
+    1. [Installing Dependencies](#Installing Dependencies)
+1. [File Hieghrarcy](#File Hieghrarcy)
+1. [Authors](#Authors)
 
-## Usage
-  Clone or download the repo and run npm install, then open three terminal windows:
+## Prerequisites
+  Node ^6.11.4
+  MongoDb
+  React
+
+## Installation
+- Get a copy of the repo
+```
+$ git clone https://github.com/Sarakoki/GreenFieldProject
+```
+-  install all dependencies found in 'packkage.json' file
+```
+$ npm install
+``` 
+- open three terminal windows:
+```
 1. npm run server-dev
+```
+```
 2. npm run react-dev
+```
+```
 3. sudo mongod
-
-
-## Requirements
-
-Node ^6.11.4
-MongoDb
-React
+```
 
 ## Development
 
@@ -41,11 +52,49 @@ npm install
 bower install
 ```
 
-### Roadmap
+# File Hieghrarcy
+    GreenFieldProject
+    - server
+      - Models
+        - jobs.js
+        - users.js
+      - index.js
+    - database-mongo
+      - index.js
+    - react-client
+      - dist
+        - index.html
+      - src
+        - components
+          - Home.jsx
+          - JobList.jsx
+          - JobPage.jsx
+          - JobsForm.jsx
+          - JobsForUser.jsx
+          - Login
+          - NavBarComponent.jsx
+          - NotAuthenticatedHome.jsx
+          - Profile.jsx
+          - Search.jsx
+          - SignUp.jsx
+          - UpdateUser.jsx
+          - UserInfo.jsx
+          - UserJobs.jsx
+          - UserProfile.jsx
+        - routes
+          - AppRouter.jsx
+        - styles
+          - base
+            - _base.scss
+          - styles.scss
+        - index.jsx
+    - package.json
+    - README.md
 
-View the project roadmap [here](https://waffle.io/RBKJuggernaut/GreenFieldProject)
 
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+# Authors
+- [Tal Omari](https://github.com/Talomari) - Scrum master.
+- [Nada Ghanem](https://github.com/nadaa) - Product Owner.
+- [Raed Awwad](https://github.com/raedawwad95) - Team member.
+- [Samer Salmeh](https://github.com/SamerSalmeh) - Team member.
+- [Sara Koki](https://github.com/Sarakoki) - Team member.
