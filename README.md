@@ -16,9 +16,10 @@ These instructions will get you a copy of the project up and running on your loc
 1. [Authors](#Authors)
 
 ### Prerequisites
-  Node ^6.11.4
-  MongoDb
-  React
+Make sure you installed the following :
+    Node ^6.11.4
+    MongoDb
+    React
 
 ### Installation
 - Get a copy of the repo
