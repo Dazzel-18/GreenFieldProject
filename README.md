@@ -1,49 +1,77 @@
-# Project Name
+#  Portable Jobs
+Have you ever wanted to work in spare time or find someone to help you for low cost?. Portable Jobs app is ideal to answer your question and more.
+This project is originally built by [RBKJuggernaut](https://github.com/RBKJuggernaut/Pocket-Jobs). Part from Legacy project in RBK bootcamp, we ed the project and add more features to it.
 
->  Portable Jobs
+## Getting Started
 
-Have you ever felt to work in spare time or find someone to help you for low cost?. This website can be ideal if you want to answer the previous question. Portable Jobs  
-
-
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 ## Table of Contents
 
- [Requirements](#Requirements)
- [Installation](#Installation)
- [Features](#Features)
- [Project video] (#Sceencapturing)
-    
- [Team](#team)
- [Contributing](#contributing)
+1. [Getting Started](#getting-started)
+    1. [Technologies](#technologies)
+    1. [Installation](#installation)
+1. [Features](#features)
+1. [Demo](#demo)
+1. [Authors](#authors)
+
+### Technologies
+
+Make sure you installed the following :
+- [ReactJS](https://reactjs.org) - Front-end framework
+- [Nodejs](https://nodejs.org/) - the server
+- [MongoDB/mongoose](https://docs.mongodb.com/) - Database and ORM used
 
 
-## Requirements
-Node ^6.11.4
-MongoDb
-React
+### Installation
 
-
-## Installation
-```sh
-sudo npm install -g bower
-npm install
-bower install
+- Get a copy of the repo
 ```
+$ git clone https://github.com/Dazzel-18/LegacyProject
+```
+-  install all dependencies found in 'package.json' file
+```
+$ npm install
+``` 
+- open three terminals:
+```
+$ npm run server-dev
+```
+```
+$ npm run react-dev
+```
+```
+$ sudo mongod
+```
+## Added Features
+- comments option (users can write comments under jobs of their interest)
+- extra fields on registeration page:
+    - Uploaing profile image
+    - Add gender option
+    
+-  show details link to a seperated page which hold extra information about listed job
+- order Jobs on home page descendingly
 
-## Features 
+- extra fields on Job Page:
 
+    - job date on Job page
+    - salaray Field on Job page
+    - job icon associated with job title
 
+- profile page for each user
+- user rating on the profile pager
+- Search box to find registered users
+- chat box on user profile
+- interest button for each job (interested job seekers can show their interests by clicking on the button)
+- assign job to users (appear only for job provider, they can only see interested users on the list)
+- list of jobs assigned appear on user profile
+- users can rate other users (they are not allowed to rate themslves)
 
-## Sceencapturing
-https://youtu.be/b8q6jl9UZiw
+## [Demo](https://youtu.be/b8q6jl9UZiw)
+    
 
-
-## Team
-
-  - __Product Owner__: Nada Ghanem
-  - __Scrum Master__: Tal Alomary
-  - __Development Team Members__: Raed, Samer
-  
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+## Authors
+- [Tal Omari](https://github.com/Talomari) - Scrum master.
+- [Nada Ghanem](https://github.com/nadaa) - Product Owner.
+- [Raed Awwad](https://github.com/raedawwad95) - Team member.
+- [Samer Salmeh](https://github.com/SamerSalmeh) - Team member.
+- [Sara Koki](https://github.com/Sarakoki) - Team member.
