@@ -67,6 +67,7 @@ class Profile extends React.Component {
 }
 
   sendRate(){
+
     var that=this;
     axios.post('/rating',{rating:that.state.rating ,userName:this.state.user.userName})
   .then(response=>{
@@ -106,15 +107,6 @@ render() {
         <p id="p2">{this.state.user.phoneNumber}</p>
         <div>
           <h2>Rating: {Math.round(this.state.userRate/this.state.userTotal)}</h2>
-
-          <h2 id="h2">Rating: {this.state.rating}</h2>
-
-          <StarRatingComponent 
-            name="rate1" 
-            starCount={10}
-            value={this.state.rating}
-            onStarClick={this.onStarClick.bind(this)}
-          /><Button  onClick ={this.sendRate} type="submit" bsStyle="primary" bsSize="small">AddRate</Button> 
          
       </div>
     </div>

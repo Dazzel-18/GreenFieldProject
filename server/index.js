@@ -214,11 +214,9 @@ app.post("/signup",function(req, res){
 });
 
 app.post('/rating',function(req,res){
-	//console.log(req.body.userName)
 
 	if(req.session.userName!==req.body.username){
 	Users.findRate(req.body,function(err,result){
-		//console.log('aaaa',result)
 		if (!err && result) {
 			console.log('aaaa',result.rating.numberOfRater)
 			console.log('aaaassa',result.rating.Total)
