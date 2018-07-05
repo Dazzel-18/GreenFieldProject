@@ -1,4 +1,3 @@
-
 #  Portable Jobs
 Have you ever wanted to work in spare time or find someone to help you for low cost?. Portable Jobs app is ideal to answer your question and more.
 This project is originally built by [RBKJuggernaut](https://github.com/RBKJuggernaut/Pocket-Jobs). Part from Legacy project in RBK bootcamp, we ed the project and add more features to it.
@@ -9,7 +8,6 @@ This project is originally built by [RBKJuggernaut](https://github.com/RBKJugger
 1. [Getting Started](#getting-started)
     1. [Technologies](#technologies)
     1. [Installation](#installation)
-1. [Usage] (#usage)
 1. [Features](#features)
 1. [Demo](#demo)
 1. [Authors](#authors)
@@ -35,6 +33,9 @@ $ npm install
 
 ## Usage
 
+``` 
+- open three terminals:
+
 ```
 $ npm run server-dev
 ```
@@ -49,8 +50,8 @@ $ sudo mongod
 - extra fields on registeration page:
     - Uploaing profile image
     - Add gender option
-
 - show details link to a seperated page which hold extra information about listed job
+-  show details link to a seperated page which hold extra information about listed job
 - order Jobs on home page descendingly
 
 - extra fields on Job Page:
