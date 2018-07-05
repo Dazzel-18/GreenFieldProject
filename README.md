@@ -1,10 +1,9 @@
+
 #  Portable Jobs
 Have you ever wanted to work in spare time or find someone to help you for low cost?. Portable Jobs app is ideal to answer your question and more.
 This project is originally built by [RBKJuggernaut](https://github.com/RBKJuggernaut/Pocket-Jobs). Part from Legacy project in RBK bootcamp, we ed the project and add more features to it.
 
-## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
@@ -32,7 +31,7 @@ $ git clone https://github.com/Dazzel-18/LegacyProject
 -  install all dependencies found in 'package.json' file
 ```
 $ npm install
-``` 
+```
 
 ## Usage
 
@@ -50,7 +49,7 @@ $ sudo mongod
 - extra fields on registeration page:
     - Uploaing profile image
     - Add gender option
-    
+
 - show details link to a seperated page which hold extra information about listed job
 - order Jobs on home page descendingly
 
@@ -70,7 +69,7 @@ $ sudo mongod
 - users can rate other users (they are not allowed to rate themslves)
 
 ## [Demo](https://youtu.be/b8q6jl9UZiw)
-    
+
 
 ## Authors
 - [Tal Omari](https://github.com/Talomari) - Scrum master.
