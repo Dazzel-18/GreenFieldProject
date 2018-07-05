@@ -1,53 +1,80 @@
-# Project Name
+#  Portable Jobs
+Have you ever wanted to work in spare time or find someone to help you for low cost?. Portable Jobs app is ideal to answer your question and more.
+This project is originally built by [RBKJuggernaut](https://github.com/RBKJuggernaut/Pocket-Jobs). Part from Legacy project in RBK bootcamp, we ed the project and add more features to it.
 
->  Pocket Jobs
+## Getting Started
 
-## Team
-
-  - __Product Owner__: Atheer Mahmood
-  - __Scrum Master__: Dareen Hanash
-  - __Development Team Members__: Hamza Alwan, Livia Nistor
-
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+1. [Getting Started](#getting-started)
+    1. [Technologies](#technologies)
+    1. [Installation](#installation)
+1. [Usage] (#usage)
+1. [Features](#features)
+1. [Demo](#demo)
+1. [Authors](#authors)
+
+### Technologies
+
+Make sure you installed the following :
+- [ReactJS](https://reactjs.org) - Front-end framework
+- [Nodejs](https://nodejs.org/) - the server
+- [MongoDB/mongoose](https://docs.mongodb.com/) - Database and ORM used
+
+
+### Installation
+
+- Get a copy of the repo
+```
+$ git clone https://github.com/Dazzel-18/LegacyProject
+```
+-  install all dependencies found in 'package.json' file
+```
+$ npm install
+``` 
 
 ## Usage
-  Clone or download the repo and run npm install, then open three terminal windows:
-1. npm run server-dev
-2. npm run react-dev
-3. sudo mongod
 
-
-## Requirements
-
-Node ^6.11.4
-MongoDb
-React
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-sudo npm install -g bower
-npm install
-bower install
 ```
+$ npm run server-dev
+```
+```
+$ npm run react-dev
+```
+```
+$ sudo mongod
+```
+## Added Features
+- comments option (users can write comments under jobs of their interest)
+- extra fields on registeration page:
+    - Uploaing profile image
+    - Add gender option
+    
+- show details link to a seperated page which hold extra information about listed job
+- order Jobs on home page descendingly
 
-### Roadmap
+- extra fields on Job Page:
 
-View the project roadmap [here](https://waffle.io/RBKJuggernaut/GreenFieldProject)
+    - job date on Job page
+    - salaray Field on Job page
+    - job icon associated with job title
 
+- profile page for each user
+- user rating on the profile pager
+- Search box to find registered users
+- chat box on user profile
+- interest button for each job (interested job seekers can show their interests by clicking on the button)
+- assign job to users (appear only for job provider, they can only see interested users on the list)
+- list of jobs assigned appear on user profile
+- users can rate other users (they are not allowed to rate themslves)
 
-## Contributing
+## [Demo](https://youtu.be/b8q6jl9UZiw)
+    
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+## Authors
+- [Tal Omari](https://github.com/Talomari) - Scrum master.
+- [Nada Ghanem](https://github.com/nadaa) - Product Owner.
+- [Raed Awwad](https://github.com/raedawwad95) - Team member.
+- [Samer Salmeh](https://github.com/SamerSalmeh) - Team member.
+- [Sara Koki](https://github.com/Sarakoki) - Team member.
