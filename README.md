@@ -2,7 +2,9 @@
 Have you ever wanted to work in spare time or find someone to help you for low cost?. Portable Jobs app is ideal to answer your question and more.
 This project is originally built by [RBKJuggernaut](https://github.com/RBKJuggernaut/Pocket-Jobs). Part from Legacy project in RBK bootcamp, we ed the project and add more features to it.
 
+## Getting Started
 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
@@ -72,9 +74,68 @@ $ sudo mongod
 ## [Demo](https://youtu.be/b8q6jl9UZiw)
 
 
+=======
+
+### Technologies
+
+Make sure you installed the following :
+- [ReactJS](https://reactjs.org) - Front-end framework
+- [Nodejs](https://nodejs.org/) - the server
+- [MongoDB/mongoose](https://docs.mongodb.com/) - Database and ORM used
+
+
+### Installation
+
+- Get a copy of the repo
+```
+$ git clone https://github.com/Dazzel-18/LegacyProject
+```
+-  install all dependencies found in 'package.json' file
+```
+$ npm install
+``` 
+- open three terminals:
+```
+$ npm run server-dev
+```
+```
+$ npm run react-dev
+```
+```
+$ sudo mongod
+```
+## Added Features
+
+- comments option (users can write comments under jobs of their interest)
+- extra fields on registeration page:
+    - Uploaing profile image
+    - Add gender option
+-  show details link to a seperated page which hold extra information about listed job
+- order Jobs on home page descendingly
+- extra fields on Job Page:
+    - job date on Job page
+    - salaray Field on Job page
+    - job icon associated with job title
+- profile page for each user
+- user rating on the profile pager
+- Search box to find registered users
+- chat box on user profile
+- interest button for each job (interested job seekers can show their interests by clicking on the button)
+- assign job to users (appear only for job provider, they can only see interested users on the list)
+- list of jobs assigned appear on user profile
+- users can rate other users (they are not allowed to rate themslves)
+
+## [Demo](https://youtu.be/b8q6jl9UZiw)
+    
+
+>>>>>>> Update README.md
 ## Authors
 - [Tal Omari](https://github.com/Talomari) - Scrum master.
 - [Nada Ghanem](https://github.com/nadaa) - Product Owner.
 - [Raed Awwad](https://github.com/raedawwad95) - Team member.
 - [Samer Salmeh](https://github.com/SamerSalmeh) - Team member.
+<<<<<<< 1fe538ba61a7adff6dfc55ae66cbe873a8093ce2
 - [Sara Koki](https://github.com/Sarakoki) - Team member.
+=======
+- [Sara Koki](https://github.com/Sarakoki) - Team member.
+>>>>>>> Update README.md
