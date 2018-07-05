@@ -48,6 +48,7 @@ $ npm run react-dev
 $ sudo mongod
 ```
 ## Added Features
+
 - comments option (users can write comments under jobs of their interest)
 - extra fields on registeration page:
     - Uploaing profile image
@@ -73,8 +74,6 @@ $ sudo mongod
 
 ## [Demo](https://youtu.be/b8q6jl9UZiw)
 
-
-=======
 
 ### Technologies
 
