@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
-
-////Jobs Schema
+//Jobs Schema
 var jobsSchema = mongoose.Schema({
   user: 
   {
@@ -9,359 +8,364 @@ var jobsSchema = mongoose.Schema({
   },
   jobTitle: {
     type: String,
-    require:true
+    require: true
   },
   jobDescription: String,
   category: {
     type: String,
-    require:true
+    require: true
   },
   salary: {
     type: String,
-    require:true
+    require: true
   },
   from: String,
   to: String,
-  dateTo:Date,
-  dateFrom:Date,
+  dateTo: Date,
+  dateFrom: Date,
   created_at: 
   {
-    type:Date,
-    default:Date.now
+    type: Date,
+    default: Date.now
   }, 
   dateFrom: String,
   dateTo: String,
-
-   takenBy:{
-    type:String,
+  takenBy:{
+    type: String,
     default:"Vacant"
-
-   }
-
+  }
 });
 
-
-var InterestSchema= mongoose.Schema({
+var InterestSchema = mongoose.Schema({
   username: {
-    type:String,
-    index: {unique: true }
+    type: String,
+    index: {
+      unique: true
+    }
   },
   jobId: {
-    type:String,
+    type: String
   }
 })
 
-var Interests= mongoose.model("Interests", InterestSchema)
-
-
-
-var commentsSchema= mongoose.Schema({
+var Interests = mongoose.model("Interests", InterestSchema)
+var commentsSchema = mongoose.Schema({
   username: String,
   text: String,
   idJob: String
-
-
 })
 
-var Comments= mongoose.model("Comments", commentsSchema)
-
-/////Jobs Model
+var Comments = mongoose.model("Comments", commentsSchema)
+//Jobs Model
 var Jobs = mongoose.model('Jobs', jobsSchema);
-
-var createJob = function(userName,data, callback){
-  data["user"]=userName;
+var createJob = function(userName, data, callback){
+  data["user"] = userName;
   Jobs.create(data, callback)
 };
 
-// i think we don't need to pass data because 
-// it's gonna retrive all the jobs n the schema 
-// idk though
 var allJobs = function (callback){
-   Jobs.aggregate([
-
-    {$sort:
-       {created_at:-1}
+  Jobs.aggregate([
+    {
+      $sort: {
+        created_at: -1
+      }
     },
-   {
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-   }
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
-        }
-        callback(null, data)
-    });
+    {
+      $lookup: {
+        from: "users",
+        localField: "user",
+        foreignField: "userName",
+        as: "userInfo"
+      }
+    }
+  ], function (err, data) {
+
+    if (err) {
+      console.log(err);
+      callback(err, null);
+    }
+
+    callback(null, data)
+  });
 };
 
 var jobByTitle = function (jobTitle, callback){
   Jobs.findOne({jobTitle: jobTitle}, function(err, data){
+
     if(err){
       callback(err, null)
     } else {
     callback(null, data)
-  }
+    }
+
   });
 };
 
-
 var getJobById = function (jobId, callback){
+  Jobs.aggregate([
+    { 
+      $match: {
+        '_id': mongoose.Types.ObjectId(jobId)
+      } 
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "user",
+        foreignField: "userName",
+        as: "userInfo"
+      }
+    }
+  ], function (err, data) {
 
-Jobs.aggregate([
+    if (err) {
+      callback(err, null);
+    }
 
-   { $match: {'_id':mongoose.Types.ObjectId(jobId)} },
-  
-   {
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-   }
-
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
-        }
-       // console.log("get data",data);
-        callback(null, data)
-    });
+    callback(null, data)
+  });
 }
 
+var getUserJob = function (jobTitle, user, callback){
+  Jobs.findOne({"jobTitle": jobTitle, "user":user}, function(err, data){
 
-
-
-
-
-var getUserJob = function (jobTitle,user, callback){
-  Jobs.findOne({"jobTitle": jobTitle,"user":user}, function(err, data){
     if(err){
       callback(err, null)
     } else {
     callback(null, data)
-  }
+    }
+
   });
-
-
-
-  
 };
 
 var findSome = function(title, callback){
+  var regexValue = '\.*'+title+'\.*';
+  Jobs.aggregate([
+    {
+      $match: {
+        "jobTitle":new RegExp(regexValue, 'i')
+      }
+    },
+    {
+      $lookup: {
+        from: "users",
+        localField: "user",
+        foreignField: "userName",
+        as: "userInfo"
+      }
+    }  
+  ], function (err, data) {
 
-var regexValue = '\.*'+title+'\.*';
+    if (err) {
+      callback(err, null);
+      }
 
-
- Jobs.aggregate([
-    {$match:{"jobTitle":new RegExp(regexValue, 'i')}},
-   {
-    
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-  }
-  
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
-        }
-        callback(null, data)
-    });
-  
+      callback(null, data)
+  });
 };
+
 var jobByUserName = function(user, callback){
-  if(user.user!=="All"){
-   Jobs.aggregate([
-    {$match:{"user":user.user}},
-   {
-    
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-  }
-  
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
+
+  if(user.user !== "All"){
+    Jobs.aggregate([
+      {
+        $match: {
+          "user":user.user
         }
-        callback(null, data)
-    });
- }else{
-   Jobs.aggregate([
-   {
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-  }
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "userName",
+          as: "userInfo"
         }
-        callback(null, data)
+      } 
+    ], function (err, data) {
+
+      if (err) {
+        callback(err, null);
+      }
+
+      callback(null, data)
     });
- }
+  }else{
+    Jobs.aggregate([
+      {
+        $lookup: {
+            from: "users",
+            localField: "user",
+            foreignField: "userName",
+            as: "userInfo"
+        }
+      }
+    ], function (err, data) {
+
+      if (err) {
+        callback(err, null);
+      }
+
+      callback(null, data)
+    });
+  }
 };
 
 var jobsByCategory = function(category, callback){
-  if(category.category!=="All"){
-   Jobs.aggregate([
-    {$match:{"category":category.category}},
-   {
-    
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-  }
-  
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
+  if(category.category !== "All"){
+    Jobs.aggregate([
+      {
+        $match: {
+          "category":category.category
         }
-        callback(null, data)
-    });
- }else{
-   Jobs.aggregate([
-   {
-     $lookup:
-       {
-         from: "users",
-         localField: "user",
-         foreignField: "userName",
-         as: "userInfo"
-       }
-  }
-], function (err, data) {
-        if (err) {
-          console.log(err);
-            callback(err, null);
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "userName",
+          as: "userInfo"
         }
-        callback(null, data)
+      }
+    ], function (err, data) {
+
+      if (err) {
+        callback(err, null);
+      }
+
+      callback(null, data)
     });
- }
-  
+  } else {
+    Jobs.aggregate([
+      {
+        $lookup: {
+          from: "users",
+          localField: "user",
+          foreignField: "userName",
+          as: "userInfo"
+        }
+      }
+    ], function (err, data) {
+
+      if (err) {
+        callback(err, null);
+      }
+
+      callback(null, data)
+    });
+  }  
 };
 
 var jobsByStartTime = function(from, callback){
   Jobs.find({from: from}, function(err, data){
+
     if(err){
       callback(err, null)
     } else {
     callback(null, data)
-  }
+    }
+
   });
 };
 
 var jobsByEndTime = function(to, callback){
   Jobs.find({to: to}, function(err, data){
+
     if(err){
       callback(err, null)
     } else {
     callback(null, data)
-  }
+    }
+
   });
 };
+
 var updateUserJob = function(jobTitle,user, updatedData, callback){
-  Jobs.findOneAndUpdate({jobTitle: jobTitle,user:user}, {$set: updatedData}, callback)
+  Jobs.findOneAndUpdate({
+    jobTitle: jobTitle,
+    user: user
+  }, 
+  {
+    $set: updatedData
+  }, callback)
 };
 var updateJobs = function(jobTitle, updatedData, callback){
-  Jobs.findOneAndUpdate({jobTitle: jobTitle}, {$set: updatedData}, callback)
+  Jobs.findOneAndUpdate({
+    jobTitle: jobTitle
+  }, 
+  {
+    $set: updatedData
+  }, callback)
 };
 
 var deleteJob = function(jobTitle, callback){
-  Jobs.deleteOne({jobTitle: jobTitle}, callback)
+  Jobs.deleteOne({
+    jobTitle: jobTitle
+  }, callback)
 };
 var createComment=function(comment,userName,callback){  
-  var comment=new Comments({
+  var comment = new Comments({
     username:userName.userName,
     text: comment.comments,
     idJob: comment._id,
   })
-
   comment.save(function(err){
+
     if(err){
       callback(err)
     }
-  callback(null,comment)
 
+    callback(null, comment)
   })
-
 }
+
 var findComment = function (id, callback){
   Comments.find(function(err, data){
+
     if(err){
       callback(err, null)
     } else {
       var arr=[];
-      for(var i=0;i<data.length;i++){
-        if(id.id===data[i].idJob){
+      for(var i = 0; i < data.length; i++){
+        if(id.id === data[i].idJob){
           arr.push(data[i])
         }
       }
-    callback(null, arr)
-  }
+      callback(null, arr)
+    }
+
   });
 };
 
 
 
-var createJobInterest=function(jobId,loggedUser,callback){
-  var interest=new Interests({
+var createJobInterest = function(jobId, loggedUser, callback){
+  var interest = new Interests({
     username:loggedUser,
     jobId: jobId
   })
-
   interest.save(function(err){
+
     if(err){
       callback(err)
     }
-  callback(null,interest)
+    callback(null, interest)
 
   })
  }
 
+ var getInterestUsers = function(jobId, callback){
+  Interests.find({
+    jobId:jobId
+  }, function(err, data){
 
-
- var getInterestUsers=function(jobId,callback){
-  Interests.find({jobId:jobId},function(err,data){
-
-    if(err)
-      callback(err,null);
-    else{
-
-     callback(null,data);
+    if(err){
+      callback(err, null);
+    } else {
+     callback(null, data);
     }
-  })
 
- }
+  })
+}
 
 var findTaken = function (user, callback){
   Jobs.find(function(err, data){
@@ -369,34 +373,34 @@ var findTaken = function (user, callback){
       callback(err, null)
     } else {
       var arr=[];
-      for(var i=0;i<data.length;i++){
-        if(user===data[i].takenBy && data[i]!=='Vacant'){
+      for(var i = 0; i < data.length; i++){
+        if(user === data[i].takenBy && data[i] !== 'Vacant'){
           arr.push(data[i])
         }
       } 
-    callback(null, arr)
-  }
+      callback(null, arr)
+    }
   });
 }
- var assignJob=function(jobId,user,callback){
-
-
-Jobs.findById({_id:jobId},function(err,data){
-  if(err)
-    callback(err,null);
-
-  else{
-    if (data.takenBy==='Vacant'){
-        data.takenBy=user;
+var assignJob = function(jobId, user, callback){
+  Jobs.findById({
+    _id:jobId
+  }, function(err, data){
+    if(err){
+      callback(err, null);
+    } else {
+      if (data.takenBy === 'Vacant'){
+        data.takenBy = user;
         data.save(function(err){
-        if (err)   console.log("error in saving takenBy")
-       })
+          if (err) {
+            console.log('error in saving takenBy')
+          }  
+        })
       }
-    callback(null,data);
-  }
-})
-
- }
+      callback(null, data);
+    }
+  })
+}
 
 // Exporting the Model and the functions
 module.exports.Jobs = Jobs;
@@ -416,9 +420,7 @@ module.exports.updateUserJob = updateUserJob;
 module.exports.getJobById=getJobById;
 module.exports.createComment = createComment;
 module.exports.findComment = findComment;
-module.exports.createJobInterest=createJobInterest;
-module.exports.getInterestUsers=getInterestUsers;
-module.exports.assignJob=assignJob;
-module.exports.findTaken=findTaken;
-
-
+module.exports.createJobInterest = createJobInterest;
+module.exports.getInterestUsers = getInterestUsers;
+module.exports.assignJob = assignJob;
+module.exports.findTaken = findTaken;
