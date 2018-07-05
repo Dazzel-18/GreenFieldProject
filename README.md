@@ -127,14 +127,10 @@ $ sudo mongod
 ## [Demo](https://youtu.be/b8q6jl9UZiw)
     
 
->>>>>>> Update README.md
 ## Authors
+
 - [Tal Omari](https://github.com/Talomari) - Scrum master.
 - [Nada Ghanem](https://github.com/nadaa) - Product Owner.
 - [Raed Awwad](https://github.com/raedawwad95) - Team member.
 - [Samer Salmeh](https://github.com/SamerSalmeh) - Team member.
-<<<<<<< 1fe538ba61a7adff6dfc55ae66cbe873a8093ce2
 - [Sara Koki](https://github.com/Sarakoki) - Team member.
-=======
-- [Sara Koki](https://github.com/Sarakoki) - Team member.
->>>>>>> Update README.md
