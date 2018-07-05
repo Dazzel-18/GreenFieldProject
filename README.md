@@ -10,6 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. [Getting Started](#getting-started)
     1. [Technologies](#technologies)
     1. [Installation](#installation)
+1. [Usage] (#usage)
 1. [Features](#features)
 1. [Demo](#demo)
 1. [Authors](#authors)
@@ -32,7 +33,9 @@ $ git clone https://github.com/Dazzel-18/LegacyProject
 ```
 $ npm install
 ``` 
-- open three terminals:
+
+## Usage
+
 ```
 $ npm run server-dev
 ```
@@ -48,7 +51,7 @@ $ sudo mongod
     - Uploaing profile image
     - Add gender option
     
--  show details link to a seperated page which hold extra information about listed job
+- show details link to a seperated page which hold extra information about listed job
 - order Jobs on home page descendingly
 
 - extra fields on Job Page:
