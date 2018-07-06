@@ -46,7 +46,6 @@ var usersSchema = mongoose.Schema({
 //User Model
 var Users = mongoose.model('Users', usersSchema);
 
-
 ////hashing the password
 var hashPassword = function(password, callback) {
   const saltRounds = 10;
@@ -56,6 +55,7 @@ var hashPassword = function(password, callback) {
   };
 var createUsers = function(data, callback){
   var userdata = data;
+
   //////add the hashed password to the data
   hashPassword(data.password, function(hashed){
     userdata["password"] = hashed;
@@ -63,9 +63,6 @@ var createUsers = function(data, callback){
   ///save to database
   Users.create(userdata, callback);
 };
-
-
-// a function to retrive all users 
 
 var retriveALlUsers=function(callback){
 
@@ -79,9 +76,6 @@ var retriveALlUsers=function(callback){
 
   })
 }
-
-
-
 
 var getUser = function(userName, password, callback){
   ///query for checking the usename
@@ -102,8 +96,6 @@ var getUser = function(userName, password, callback){
       }else{
         callback("Invalid User Name", null);
       }
-    
-      
       }
   });
 };
@@ -121,42 +113,23 @@ var getUserInfo= function(userName, callback){
       }
   });
 };
+
 var findRate= function(data,callback){
   var uName=data.userName;
   var rating=data.rating;
   Users.findOne({userName:uName},function(err,data){
-    if(err) console.log("error");
-
+    if(err) {
+      console.log("error");
+    }
     else{
-      
       data.rating.rate+=rating;
       data.rating.total+=1;
-
       data.save(function(err){
         console.log("success");
-
       })
     }
-
   })
-
 }
-
-
-  //console.log(data);
-  // var rateUSer = new Users({
-  //   rating:data.rating,
-  // })
-  
-  // rateUSer.save(function(err,data){
-  //   if(err){
-  //     callback(err)
-  //   }
-  //   else{
-  //     callback(null,data)
-  //   }
-  // })
-
 
 var updateUsers = function(userName, updatedData, callback){
   Users.findOneAndUpdate({userName: userName}, {$set: updatedData}, callback)

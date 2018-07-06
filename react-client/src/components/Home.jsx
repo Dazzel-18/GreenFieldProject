@@ -47,7 +47,7 @@ class Home extends React.Component {
       });
   }
 
-//make new get requests for each filter
+//get list of available jobs
   componentDidMount() {
     var that=this ;
     axios.get('/jobs')
