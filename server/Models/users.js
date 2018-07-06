@@ -63,7 +63,7 @@ var createUsers = function(data, callback){
   Users.create(userdata, callback);
 };
 
-// a function to retrive all users 
+// a function to retrive all users
 var retriveALlUsers = function(callback){
   Users.find({},'name email gender age phoneNumber nationality rate address salary',
   function(data,err){
@@ -91,7 +91,7 @@ var getUser = function(userName, password, callback){
 
         //checking the password
         if(bcrypt.compareSync(password, userdata.password)){
-        //retrieve the data if the user is exist 
+        //retrieve the data if the user is exist
         callback(null, userdata);
         } else {
           callback('wrong password', null);
@@ -134,14 +134,13 @@ var findRate = function(data,callback){
         console.log('success');
       })
     }
-
   })
 }
 
 var updateUsers = function(userName, updatedData, callback){
   Users.findOneAndUpdate({
     userName: userName
-  }, 
+  },
   {
     $set: updatedData
   }, callback)
