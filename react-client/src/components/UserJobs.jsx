@@ -122,7 +122,6 @@ class UserJobs extends React.Component {
               <Col md={1}>
               </Col> 
             </Row><br />
-
             <Row>
               <Col md={1}>
               </Col> 

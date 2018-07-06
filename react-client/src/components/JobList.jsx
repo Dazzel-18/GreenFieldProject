@@ -68,6 +68,7 @@ class JobList extends React.Component {
 			phonNum=this.props.item.userInfo[0].phoneNumber;
 		}
 		let image;
+		// icons to represent jobs title
 		if(this.props.item.category==="Driver"){
 			image="https://cdn2.iconfinder.com/data/icons/professionals-flat-colorful/614/1583_-_Driver_Male-256.png";
 		} else if(this.props.item.category==="Home Maintenance"){
