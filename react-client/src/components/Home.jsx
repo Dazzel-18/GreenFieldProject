@@ -21,66 +21,59 @@ class Home extends React.Component {
         .catch(function (error) {
          console.log(error);
         });
-      }
+  }
 
   searchJobCategory(category){
     var that = this;
-   axios.post('/jobCategory', {"category": category})
-        .then(function(response){
-          const posts = response.data;
-            that.setState({items: posts});
-        })
-          .catch(function (error) {
-            console.log(error);
-        });
+    axios.post('/jobCategory', {"category": category})
+      .then(function(response){
+        const posts = response.data;
+          that.setState({items: posts});
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   searchJobTitle(query) {
     var that = this;
-     axios.post('/someJobs', {query:query})
-          .then(function (response) {
-            const posts = response.data;
-            that.setState({items: posts});
-
-        })
-          .catch(function (error) {
-            console.log(error);
-        });
-  
+    axios.post('/someJobs', {query:query} )
+      .then(function (response) {
+        const posts = response.data;
+        that.setState({items: posts});
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
-//make new get requests for each filter
+//get list of available jobs
   componentDidMount() {
     var that=this ;
     axios.get('/jobs')
-    .then(response => {
-    const posts = response.data;
-    that.setState({items:posts});
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  
-}
+      .then(response => {
+        const posts = response.data;
+        that.setState({items:posts});
+      })
+      .catch(function (error) {
+        console.log(error);
+      }); 
+  }
 
-render() {
-  
-  return (
-  
-    <div id='home'>
-    <br />
-    <div>
-    <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
-    {this.state.items.map(function(item ,index){
-      return (
-        <JobList key={index} item={item}/>
-        )
-    })}
-    
-    </div>
-    </div>
-    
+  render() {
+    return (
+      <div id='home'>
+        <br />
+        <div>
+          <Search searchJobTitle={this.searchJobTitle.bind(this)} searchJobCategory={this.searchJobCategory.bind(this)} />
+            {this.state.items.map(function(item ,index){
+            return (
+            <JobList key={index} item={item}/>
+            )
+            })}
+        </div>
+      </div>
     )
-}
+  }
 }
 export default Home;

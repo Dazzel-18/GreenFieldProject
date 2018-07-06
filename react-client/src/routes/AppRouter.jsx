@@ -14,54 +14,46 @@ import axios from 'axios';
 import JobPage from '../components/JobPage.jsx';
 
 class AppRouter extends React.Component {
-constructor(props) {
-    super(props);
-    this.state = { 
-      session: false
-    }
-   
-  }
+		constructor(props) {
+				super(props);
+				this.state = { 
+				session: false
+		}
+		}
 
- componentDidMount() {
- 	var that=this;
-axios.get('/logged')
-  .then(response => {
-    const posts = response.data;
-    // console.log(response);
-    that.setState({session:posts});
-     
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
-  
-   render() {
+		componentDidMount() {
+				var that=this;
+				axios.get('/logged')
+				.then(response => {
+				const posts = response.data;
+				// console.log(response);
+				that.setState({session:posts});
+				})
+				.catch(function (error) {
+				console.log(error);
+				});
+		}
 
-    return (
-	<BrowserRouter>
-		<div id="navbar">
-			<NavBarComponent  session={this.state.session}/><br /><br />
-			<Switch>
-			<Route  exact path = "/"  component = {Home}/>	
-			<Route  path = "/signup" component = {SignUpForm} />
-			<Route  path = "/UserJobs/:jobTitle/:userName" component = {UserJobs} />				
-			<Route  path = "/jobsForm" component = {JobsForm} />
-			<Route  path = "/UpdateUser" component = {UpdateUser} />			
-			<Route  path = "/login"	component = {Login} />	
-			<Route  path = "/Profile"	component = {Profile} />
-			<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
-			<Route  path = "/userProfile"	component = {UserProfile} />	
-			<Route 	path = "/jobinfo/:jobid" component = {JobPage} /> 
-
-
-
-
-			</Switch>
-		</div>
-	</BrowserRouter>
-
-	)
-}
+		render() {
+				return (
+				<BrowserRouter>
+				<div id="navbar">
+				<NavBarComponent  session={this.state.session}/><br /><br />
+				<Switch>
+				<Route  exact path = "/"  component = {Home}/>	
+				<Route  path = "/signup" component = {SignUpForm} />
+				<Route  path = "/UserJobs/:jobTitle/:userName" component = {UserJobs} />				
+				<Route  path = "/jobsForm" component = {JobsForm} />
+				<Route  path = "/UpdateUser" component = {UpdateUser} />			
+				<Route  path = "/login"	component = {Login} />	
+				<Route  path = "/Profile"	component = {Profile} />
+				<Route  path = "/logout"	component = {NotAuthenticatedHome} />	
+				<Route  path = "/userProfile"	component = {UserProfile} />	
+				<Route 	path = "/jobinfo/:jobid" component = {JobPage} /> 
+				</Switch>
+				</div>
+				</BrowserRouter>
+				)
+		}
 }
 export default AppRouter;
