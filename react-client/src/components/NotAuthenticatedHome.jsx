@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import JobList from './JobList.jsx';
-import Search from './Search.jsx'
+import Search from './Search.jsx';
 
 class NotAuthenticatedHome extends React.Component {
   constructor(props) {
