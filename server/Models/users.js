@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var bcrypt = require('bcrypt-nodejs');
 
-////User Schema
+//User Schema
 var usersSchema = mongoose.Schema({
   userName: {
     type: String,
@@ -12,66 +12,70 @@ var usersSchema = mongoose.Schema({
   name: {
         type: String,
         required: true
-      },
-  email:String,
+  },
+  email: String,
   password: String,
-  email:String,
+  email: String,
   gender: String,
   phoneNumber: {
-        type: Number,
-        required: true
-      },
+    type: Number,
+    required: true
+  },
   address: String,
   age: {
-        type: Number,
-        required: true
-      },
+    type: Number,
+    required: true
+  },
   nationality: String,
-
   rating:{
     rate:{
-      type:Number,
-      default:0
+      type: Number,
+      default: 0
     },
     total:{
-      type:Number,
-      default:0
+      type: Number,
+      default: 0
     }
   },
   image:{
-    type:String
+    type: String
   }
 });
 
 //User Model
 var Users = mongoose.model('Users', usersSchema);
 
-////hashing the password
+
+//hashing the password
 var hashPassword = function(password, callback) {
   const saltRounds = 10;
   var salt = bcrypt.genSaltSync(saltRounds);
   var hash = bcrypt.hashSync(password, salt);
   callback(hash);
-  };
+};
+
 var createUsers = function(data, callback){
   var userdata = data;
 
-  //////add the hashed password to the data
+  //add the hashed password to the data
   hashPassword(data.password, function(hashed){
     userdata["password"] = hashed;
   });
-  ///save to database
+  //save to database
   Users.create(userdata, callback);
 };
 
-var retriveALlUsers=function(callback){
 
-  Users.find({},'name email gender age phoneNumber nationality rate address salary',function(data,err){
+// a function to retrive all users
+var retriveALlUsers = function(callback){
+  Users.find({},'name email gender age phoneNumber nationality rate address salary',
+  function(data,err){
+
     if (err){
-      callback(err,null);
+      callback(err, null);
     }
     else{
-      callback(null,data)
+      callback(null, data)
     }
 
   })
@@ -82,68 +86,77 @@ var getUser = function(userName, password, callback){
   var query = Users.where({ userName: userName });
   query.findOne(function(err, userdata){
     if(err){
-      callback(err,null)
+      callback(err, null)
     } else {
       if(userdata){
-          ////checking the password
+        //checking the password
         if(bcrypt.compareSync(password, userdata.password)){
-        //retrieve the data if the user is exist 
+        //retrieve the data if the user is exist
         callback(null, userdata);
-      }
-        else{
-          callback("wrong password", null);
+        } else {
+          callback('wrong password', null);
         }
       }else{
-        callback("Invalid User Name", null);
+        callback('Invalid User Name', null);
       }
-      }
+    }
   });
 };
-
 
 var getUserInfo= function(userName, callback){
   ///query for checking the usename
   var query = Users.where({ userName: userName });
   query.findOne(function(err, userdata){
+
     if(err){
       callback(err,null)
     } else {
+      callback(null, userdata);
+    }
 
-        callback(null, userdata);
-      }
   });
 };
 
-var findRate= function(data,callback){
-  var uName=data.userName;
-  var rating=data.rating;
+
+var findRate = function(data,callback){
+  var uName = data.userName;
+  var rating = data.rating;
   Users.findOne({userName:uName},function(err,data){
-    if(err) {
-      console.log("error");
-    }
-    else{
-      data.rating.rate+=rating;
-      data.rating.total+=1;
+
+    if(err){
+      console.log('error');
+    } else {
+      data.rating.rate+ = rating;
+      data.rating.total+ = 1;
       data.save(function(err){
-        console.log("success");
+        console.log('success');
       })
     }
   })
 }
 
 var updateUsers = function(userName, updatedData, callback){
-  Users.findOneAndUpdate({userName: userName}, {$set: updatedData}, callback)
+  Users.findOneAndUpdate({
+    userName: userName
+  },
+  {
+    $set: updatedData
+  }, callback)
 };
-///update user info based on the user name
+
+//update user info based on the user name
 var deleteUser = function(userName, callback){
-  ///delete user
-  Users.deleteOne({userName:userName}, callback)
+  //delete user
+  Users.deleteOne({
+    userName:userName
+  }, callback)
 }
+
 module.exports.Users = Users;
 module.exports.createUsers = createUsers;
 module.exports.updateUsers = updateUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.getUser = getUser;
 module.exports.getUserInfo = getUserInfo;
-module.exports.retriveALlUsers=retriveALlUsers;
-module.exports.findRate=findRate;
+module.exports.retriveALlUsers = retriveALlUsers;
+module.exports.findRate = findRate;
