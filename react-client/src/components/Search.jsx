@@ -4,12 +4,10 @@ import { Button, FormGroup, FormControl, ControlLabel, DropdownButton, MenuItem 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       value: '',
       val: ''
     };
-
     this.handleCategoryChange  = this.handleCategoryChange.bind(this);
     this.handleInputChange  = this.handleInputChange.bind(this);
   }
@@ -31,19 +29,17 @@ class Search extends React.Component {
   render() {
     return (
       <div id="catagory" className="search-bar form-inline container">  
-
-      <div className="form-group">
-        <select id="catB" onChange={this.handleCategoryChange} value={this.state.val} className="form-control selectpicker btn btn-info">
-          <option value="All">Select Category</option>
-          <option value="Driver">Driver</option>
-          <option value="Home Maintenance">Home Maintenance</option>
-          <option value="Computer Maintenance">Computer Maintenance</option>
-          <option value="Babysitting">Babysitting</option>
-          <option value="Tutoring">Tutoring</option>
-        </select>
-        </div>
-
-      <FormControl
+        <div className="form-group">
+          <select id="catB" onChange={this.handleCategoryChange} value={this.state.val} className="form-control selectpicker btn btn-info">
+            <option value="All">Select Category</option>
+            <option value="Driver">Driver</option>
+            <option value="Home Maintenance">Home Maintenance</option>
+            <option value="Computer Maintenance">Computer Maintenance</option>
+            <option value="Babysitting">Babysitting</option>
+            <option value="Tutoring">Tutoring</option>
+          </select>
+          </div>
+        <FormControl
           id='catI'
           className="Sform-control"
           type="text"
@@ -56,6 +52,4 @@ class Search extends React.Component {
     );
   }
 }
-
-
 export default Search;
