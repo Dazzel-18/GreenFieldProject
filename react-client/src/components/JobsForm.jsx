@@ -166,4 +166,4 @@ class JobsForm extends React.Component {
 		)
 	}
 }
-export default JobsForm;
+export default JobsForm
