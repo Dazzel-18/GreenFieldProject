@@ -78,4 +78,4 @@ class NotAuthenticatedHome extends React.Component {
     )
   }
 }
-export default NotAuthenticatedHome;
+export default NotAuthenticatedHome
