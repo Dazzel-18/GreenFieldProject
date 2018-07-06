@@ -68,4 +68,5 @@ class JobsForUser extends React.Component {
     )
   }
 }
+
 export default JobsForUser
