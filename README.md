@@ -2,25 +2,22 @@
 Have you ever wanted to work in spare time or find someone to help you for low cost?. Portable Jobs app is ideal to answer your question and more.
 This project is originally built by [RBKJuggernaut](https://github.com/RBKJuggernaut/Pocket-Jobs). Part from Legacy project in RBK bootcamp, we ed the project and add more features to it.
 
-## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 ## Table of Contents
-1. [Getting Started](#getting-started)
-    1. [Technologies](#technologies)
-    1. [Installation](#installation)
+1. [Technologies](#technologies)
+1. [Installation](#installation)
 1. [Usage](#usage)
 1. [Features](#features)
 1. [Demo](#demo)
 1. [Authors](#authors)
 
-### Technologies
-- [ReactJS](https://reactjs.org) - Front-end framework
-- [Nodejs](https://nodejs.org/) - the server
-- [MongoDB/mongoose](https://docs.mongodb.com/) - Database and ORM used
+## Technologies
+- [ReactJS](https://reactjs.org) - Front-end 
+- [Nodejs](https://nodejs.org/) - the Back-end
+- [MongoDB/mongoose](https://docs.mongodb.com/) - Database ORM
 
 
-### Installation
+## Installation
 
 #### Get a copy of the repo
 ```
@@ -31,6 +28,7 @@ $ git clone https://github.com/Dazzel-18/LegacyProject
 $ npm install
 ```
 ## Usage
+
 #### Open three terminals:
 ```
 $ npm run server-dev
@@ -42,6 +40,7 @@ $ npm run react-dev
 $ sudo mongod
 ```
 ## Added Features:
+
 - comments option (users can write comments under jobs of their interest)
 - extra fields on registeration page:
     - Uploaing profile image
