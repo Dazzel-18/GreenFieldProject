@@ -10,6 +10,7 @@ This project is originally built by [RBKJuggernaut](https://github.com/RBKJugger
 1. [Features](#features)
 1. [Demo](#demo)
 1. [Authors](#authors)
+1. [Developers](#developers)
 
 ## Technologies
 - [ReactJS](https://reactjs.org) - Front-end 
@@ -64,6 +65,13 @@ $ sudo mongod
 ## [Demo](https://youtu.be/b8q6jl9UZiw)
 
 ## Authors
+
+- [Dareen Hanash](https://github.com/dareenkhanash) - Scrum master.
+- [Atheer Mahmood](https://github.com/Atheer83) - Product Owner.
+- [Hamza Alwan](https://github.com/HamzaAlwan) - Team member.
+- [Elena Livia](https://github.com/Elena-Livia) - Team member.
+
+## Developers
 
 - [Tal Omari](https://github.com/Talomari) - Scrum master.
 - [Nada Ghanem](https://github.com/nadaa) - Product Owner.
